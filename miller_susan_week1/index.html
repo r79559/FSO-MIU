@@ -1,26 +1,66 @@
 <!DOCTYPE html>
-        <!-- Susan R. Miller, Project 4, VFW1303 -->
+<!-- Susan R. Miller, Week 1, MiU1304 -->
 <html>
-<head>
+  <head>
     <meta charset = "UTF-8" />
-    <meta name = "description" content = "Visual Frameworks Course App" />
+    <meta name = "description" content = "MiU Course App" />
     <meta name = "keywords" content = "html5, Mobile App Development, Full Sail, homework, school" />
     <meta name = "robots" content = "index, follow" />
     <meta name = "viewport" content = "user-scalable = yes, width = device.width" />
-    <title> Chore Tracker </title>
+    <meta name = "HandheldFriendly" content = "true" />
+    <meta name = "MobileOptimized" content = "320" />
+    <title>
+      Chore Tracker
+    </title>
     <link href = "css/styles.css" rel = "stylesheet" type = "text/css" />
-</head>
-<body>
 
-    <h1>Chore Tracker</h1>
+  </head>
+  <body>
+
+	<div class = "container">
+
+		<img src="images/choretracker.png" alt="choretracker">
+
+	</div>
 
     <div class = "container">
 
-        <p>Use this app to keep track of your chores.</p>
-
-        <a href = "additem.html"><button id = "addChore">Add a Chore</button></a>
+	      <a href = "additem.html">
+	        <button id = "addChore">
+	        	Add a Chore
+	        </button>
+	      </a>
 
     </div>
 
-</body>
+    <div class = "container">
+	    Browse by Person
+    	<div id = "doers">
+
+    	</div>
+    	<button id = "showIt">
+    		Show
+    	</button>
+    </div>
+
+    <div class = "container">
+
+	      <a href = "#">
+		  	<input type = "search" id = "startsearch" value = "Search Chores">
+		    <button id = "searchChores">
+		    	Go!
+		    </button>
+	      </a>
+
+    </div>
+
+
+
+
+<script src = "js/json.js" type = "text/javascript" >
+</script>
+<script src = "js/main.js" type = "text/javascript" >
+</script>
+
+  </body>
 </html>

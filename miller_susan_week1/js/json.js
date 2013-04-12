@@ -1,6 +1,6 @@
 // Susan R. Miller
-// VFW 1303
-// Project 4
+// MiU 1304
+// Week 1
 //
 
 var json = {
@@ -23,7 +23,7 @@ var json = {
 
 	"chore3": {
 		"chore": ["Chore Name: ", "Feed dogs"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter A"],
 		"date": ["Date Due ", "04/15/2013"],
 		"effort": ["Level of Difficulty: ", "2"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -31,7 +31,7 @@ var json = {
 
 	"chore4": {
 		"chore": ["Chore Name: ", "Take out trash"],
-		"who": ["Person Responsible: ", "Papa"],
+		"who": ["Person Responsible: ", "Anyone"],
 		"date": ["Date Due ", "04/30/2013"],
 		"effort": ["Level of Difficulty: ", "5"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -55,7 +55,7 @@ var json = {
 
 	"chore7": {
 		"chore": ["Chore Name: ", "Dust upstairs"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter B"],
 		"date": ["Date Due ", "05/3/2013"],
 		"effort": ["Level of Difficulty: ", "7"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -63,7 +63,7 @@ var json = {
 
 	"chore8": {
 		"chore": ["Chore Name: ", "Clean playroom"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter A"],
 		"date": ["Date Due ", "04/23/2013"],
 		"effort": ["Level of Difficulty: ", "8"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -71,7 +71,7 @@ var json = {
 
 	"chore9": {
 		"chore": ["Chore Name: ", "Clean bedroom"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter B"],
 		"date": ["Date Due ", "04/25/2013"],
 		"effort": ["Level of Difficulty: ", "9"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -79,7 +79,7 @@ var json = {
 
 	"chore10": {
 		"chore": ["Chore Name: ", "Make bed"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter A"],
 		"date": ["Date Due ", "04/9/2013"],
 		"effort": ["Level of Difficulty: ", "2"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -111,7 +111,7 @@ var json = {
 
 	"chore14": {
 		"chore": ["Chore Name: ", "Gather yard sale stuff"],
-		"who": ["Person Responsible: ", "Mom"],
+		"who": ["Person Responsible: ", "Anyone"],
 		"date": ["Date Due ", "04/30/2013"],
 		"effort": ["Level of Difficulty: ", "9"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -127,7 +127,7 @@ var json = {
 
 	"chore16": {
 		"chore": ["Chore Name: ", "Homework"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter A"],
 		"date": ["Date Due ", "04/10/2013"],
 		"effort": ["Level of Difficulty: ", "4"],
 		"done": ["Is it Done? ", "Not Yet"]
@@ -159,7 +159,7 @@ var json = {
 
 	"chore20": {
 		"chore": ["Chore Name: ", "Meditate"],
-		"who": ["Person Responsible: ", "Daughter"],
+		"who": ["Person Responsible: ", "Daughter B"],
 		"date": ["Date Due ", "04/10/2013"],
 		"effort": ["Level of Difficulty: ", "1"],
 		"done": ["Is it Done? ", "Not Yet"]

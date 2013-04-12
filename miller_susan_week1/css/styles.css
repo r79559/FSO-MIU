@@ -1,20 +1,21 @@
 /* Susan R. Miller
-   VFW 1303 Project 4 */
+   MiU 1304 Week 1 */
 
-*{font-family: Arial, Helvetica, sans-serif;}
+*{font-family: Arial, Helvetica, sans-serif; font-size: 20;}
 
 body {
-    margin: 10px;
     background-color: #9ACF50;
-    font-size: 20px;
+    width: 640px;
 }
 
 h1 {
     margin: 5px;
-    padding: 10px;
-    width: 610px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 630px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
+    font-size: 24px;
     color: #6531FF;
     text-align: center;
     opacity: 0.8;
@@ -22,14 +23,13 @@ h1 {
 }
 
 h2 {
-    margin: 10px 3px 5px 5px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     width: 610px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     color: #6531FF;
-    text-align: center;
-    font-variant: titling-caps;
+    text-align: left;
     opacity: 0.8;
 }
 
@@ -45,7 +45,7 @@ ol ul {
 }
 
 fieldset {
-    margin-bottom: 7px;
+	margin: 10px;
     border: 1px dotted #ED4F35;
 }
 
@@ -85,6 +85,12 @@ p {
     padding-bottom: 10px;
 }
 
+p.input {
+	margin: 5px;
+	text-align: left;
+	padding: 5px;
+}
+
 #choreform {
     margin: 5px;
     padding: 10px;
@@ -96,7 +102,7 @@ p {
 
 #buttonRowTop {
     margin: 5px;
-    padding-top: 10px;
+    padding-top: 15px;
     padding-bottom: 15px;
     width: 630px;
     border: 1px solid #94145E;
@@ -108,7 +114,7 @@ p {
 
 #buttonRowBottom {
     margin: 5px;
-    padding-top: 10px;
+    padding-top: 15px;
     padding-bottom: 15px;
     width: 630px;
     border: 1px solid #94145E;
@@ -129,10 +135,15 @@ p {
     font-style: italic;
 }
 
+#doers {
+
+}
+
 .container {
-    margin: 10px 5px 5px 5px;
-    padding: 10px;
-    width: 610px;
+    margin: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 630px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     color: #ED4F35;
@@ -141,8 +152,18 @@ p {
     opacity: 0.8;
 }
 
+.subcontainer {
+	margin: 5px 15px 5px 15px;
+	padding: 5px 15px 5px 15px;
+	width: 100pt;
+	border: 1px solid #94145E;
+	background-color: #FFF2C9;
+	text-align: left;
+	opacity: 0.8;
+}
+
 .button {
-    margin: 10px;
+    margin: 20px;
     padding: 5px;
     border: 2px solid #94145E;
     background-color: #94145E;
