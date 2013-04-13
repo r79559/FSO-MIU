@@ -187,6 +187,7 @@ if (document.URL.indexOf("additem") > 1) {
         var item = {};
             item.chore = ["Chore Name: ", gE("chorename").value];
             item.who = ["Person Responsible: ", gE("choredoer").value];
+            item.when = ["When Due: ", gE("duedate").value];
             item.date = ["Date Due: ", gE("datevalue").getAttribute("value")];
             item.effort = ["Level of Difficulty: ", gE("difficulty").value];
             item.done = ["Is it Done? ", doneValue];
@@ -194,13 +195,15 @@ if (document.URL.indexOf("additem") > 1) {
         // Save to localStorage
         localStorage.setItem(id, JSON.stringify(item));
         alert("Your chore has been saved!");
-    }
+        window.location.reload();    
+        
+        }
 
 // Validate
     function validate(e) {
         var getDoer = gE("choredoer"),
             getName = gE("chorename"),
-            getDate = gE("duedate").getAttribute("value");
+            getDate = gE("datevalue").getAttribute("value");
 
 
         //Error Message Reset
@@ -208,7 +211,7 @@ if (document.URL.indexOf("additem") > 1) {
 
 	        getDoer.style.border = "1px solid black";
 	        getName.style.border = "1px solid black";
-	        getDate.style.border = "1px solid black";
+//	        getDate.style.border = "1px solid black";
         //Error Messages
         var msgs = [];
 
@@ -290,20 +293,19 @@ if (document.URL.indexOf("additem") > 1) {
     // Populate for with existing data
         gE("chorename").value = item.chore[1];
         gE("choredoer").value = item.who[1];
-
-        gE("future").setAttribute("value", gE("datevalue").getAttribute("value"));
+		gE("duedate").value = item.when[1];
+        gE("future").value = item.date[1];
         gE("difficulty").value = item.effort[1];
 
     // Loop required to determine which (if any) radios were checked
         var radios = document.forms[0].done;
         for (var i = 0; i<radios.length; i++) {
-            if (radios[i].value === "no" && item.done[1] === "no") {
+            if (radios[i].value === "Not Yet" && item.done[1] === "Not Yet") {
                 radios[i].setAttribute("checked", "checked");
-            } else if (radios[i].value === "yes" && item.done[1] === "yes") {
+            } else if (radios[i].value === "Yessiree!" && item.done[1] === "Yessiree!") {
                 radios[i].setAttribute("checked", "checked");
             }
         }
-
     // Switches content and function of Add Chore button
         addChore.removeEventListener("click", saveChore);
         addChore.innerHTML = "Save Changes";
@@ -314,6 +316,9 @@ if (document.URL.indexOf("additem") > 1) {
 
     // Assures key gets passed through
         editSubmit.key = this.key;
+        
+
+        
     }
 
 // Delete specific chore
@@ -321,7 +326,6 @@ if (document.URL.indexOf("additem") > 1) {
 
     // Checks which radio button is selected
         radioCheck();
-
     // Assures chore has been done and confirms deletion
         if (doneValue === "Yessiree!") {
             var ask = confirm("Looks like you're done!  Ready to delete this chore?");
