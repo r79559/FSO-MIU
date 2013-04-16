@@ -15,6 +15,12 @@ window.addEventListener("DOMContentLoaded", function () {
         var theElement = document.getElementById(x);
         return theElement;
     }
+    
+// getElementByTagName and Value Function
+	function gV(y){
+		var theValue = document.getElementByTagName(y)[0].getAttribute("value");
+		return theValue
+	}    
 
     // shortcut variables
     var addChore = gE("addNew"),
@@ -31,17 +37,19 @@ window.addEventListener("DOMContentLoaded", function () {
 
 /* Create and populate browse chore doers */
     function browseDoers() {
-        var selectLi = gE("doers"),
-            makeSelect = document.createElement("select");
-        makeSelect.setAttribute("id", "choredoer");
-        for (var i = 0, j = choreDoer.length; i < j; i++) {
-            var makeOption = document.createElement("option"),
-                optText = choreDoer[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
+        var doerDiv = gE("doers"),
+            makeList = document.createElement("ul");
+        makeList.setAttribute("id", "choredoer");
+        for (var i = 1, j = choreDoer.length; i < j; i++) {
+            var makeItem = document.createElement("li"),
+                itemText = choreDoer[i];
+                makeList.setAttribute("style", "list-style: none;");    
+            makeItem.setAttribute("value", itemText);
+            makeItem.setAttribute("style", "text-decoration: underline;");
+            makeItem.innerHTML = itemText;
+            makeList.appendChild(makeItem);
         }
-        selectLi.appendChild(makeSelect);
+        doerDiv.appendChild(makeList);
     }
 
 if (document.URL.indexOf("index") > 1) {
@@ -554,7 +562,7 @@ if (document.URL.indexOf("additem") > 1) {
 }
 
 if (document.URL.indexOf("index") > 1 ) {
-	var showDoer = gE("showIt");
+	var showDoer = gE("choredoer");
     showDoer.addEventListener("click", showPerson);
 }
 
