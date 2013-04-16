@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", function () {
 // getElementByTagName and Value Function
 	function gV(y){
 		var theValue = document.getElementByTagName(y)[0].getAttribute("value");
-		return theValue
+		return theValue;
 	}    
 
     // shortcut variables
@@ -33,7 +33,9 @@ window.addEventListener("DOMContentLoaded", function () {
         choreDoer = ["Select a Person", "Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
         dateOptions = ["Select a Due Date", "Today", "Tomorrow", "Future"],
         showDoer = gE("browsedoers"),
-        doneValue;
+        doneValue;   
+        
+
 
 /* Create and populate browse chore doers */
     function browseDoers() {
@@ -98,7 +100,7 @@ if (document.URL.indexOf("additem") > 1) {
 
 /* End create and populate date options */
 
-
+   	var setDate = gE("duedate"); 
 
 
 // Date function
@@ -557,12 +559,12 @@ if (document.URL.indexOf("additem") > 1) {
     resetChores.addEventListener("click", empty);
     showChoresTop.addEventListener("click", showAll);
     resetChoresTop.addEventListener("click", empty);
-    var setDate = gE("duedate");
+
     setDate.addEventListener("change", chooseDate);
 }
 
 if (document.URL.indexOf("index") > 1 ) {
-	var showDoer = gE("choredoer");
+	// var showDoer = gE("choredoer");
     showDoer.addEventListener("click", showPerson);
 }
 

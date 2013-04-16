@@ -12,7 +12,6 @@ h1 {
     margin: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 630px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     font-size: 24px;
@@ -25,7 +24,6 @@ h1 {
 h2 {
     margin: 5px;
     padding: 5px;
-    width: 610px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     color: #6531FF;
@@ -34,14 +32,19 @@ h2 {
 }
 
 ol {
-    margin: 20px;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 ol ul {
-    padding: 0;
+    padding: 0px;
     list-style: none;
 
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
 }
 
 fieldset {
@@ -94,7 +97,6 @@ p.input {
 #choreform {
     margin: 5px;
     padding: 10px;
-    width: 610px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     opacity: 0.8;
@@ -104,7 +106,6 @@ p.input {
     margin: 5px;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 630px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     color: white;
@@ -116,7 +117,6 @@ p.input {
     margin: 5px;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 630px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     color: white;
@@ -155,7 +155,6 @@ p.input {
 .subcontainer {
 	margin: 5px 15px 5px 15px;
 	padding: 5px 15px 5px 15px;
-	width: 100pt;
 	border: 1px solid #94145E;
 	background-color: #FFF2C9;
 	text-align: left;
@@ -175,7 +174,6 @@ p.input {
 .item {
     margin: 10px 5px 5px 5px;
     padding: 10px;
-    width: 610px;
     border: 1px solid #94145E;
     background-color: #FFF2C9;
     opacity: 0.8;
