@@ -34,11 +34,20 @@ window.addEventListener("DOMContentLoaded", function () {
             makeItem.appendChild(makeLink);
             doerDiv.appendChild(makeItem);
         }
+        	$(gE("browsePeople")).listview('refresh');
+
 
     }
 
+
+
 	if (document.URL.indexOf("index") > 1) {
 	browseDoers();
+
 	}
+
+
+
+
 
 }); /*Closes DOM load check function */
