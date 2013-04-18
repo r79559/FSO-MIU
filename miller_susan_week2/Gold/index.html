@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Chore Tracker</title>
+
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<link rel = "stylesheet" href="css/style.css" />
+
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" id="home">
+
+		<div data-role="header" data-position="fixed">
+			<img src="images/choretracker.png" alt="choretracker">
+		</div>
+
+		<div data-role="content">
+
+				<ul id="browsePeople" data-role="listview" data-inset="true" data-theme="d" data-divider-theme"e" data-filter="true">
+					<li data-role="list-divider">Browse by Person</li>
+
+					<!-- To be filled dynamically -->
+				</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#home" data-role="button" data-icon="home" data-corners="false">Home</a>
+				<a href="#addchore" data-role="button" data-icon="plus" data-corners="false">Add a Chore</a>
+				<a href="#allchores" data-role="button" data-icon="bars" data-corners="false">All Chores</a>
+				<a href="#about" data-role="button" data-icon="info" data-corners="false">About</a>
+			</div>
+		</div>
+	</div>
+
+	<div data-role="page" id="Daughter_A" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Daughter A's Chores</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "doohickeys" data-role="listview">
+				<li data-role="list-divider">Foo</li>
+				<li value="things"><a href="#things"><h3>Things</h3></a></li>
+				<li value="stuff"><a href="#stuff">Stuff</a></li>
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar" data-type="horizontal">
+				<a href="#home" data-icon="home" data-corners="false">Home</a>
+				<a href="#addchore" data-icon="plus" data-corners="false">Add a Chore</a>
+				<a href="#allchores" data-icon="bars" data-corners="false">All Chores</a>
+				<a href="#about" data-icon="info" data-corners="false">About</a>
+			</div>
+		</div>
+	</div>
+	<!-- JavaScript under here -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script type = "text/javascript" src = "js/main.js"></script>"
+</body>
+</html>
