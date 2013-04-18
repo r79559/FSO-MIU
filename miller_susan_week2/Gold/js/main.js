@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 /* Create and populate browse chore doers */
     function browseDoers() {
-        var doerUL = gE("browsePeople");      
+        var doerDiv = gE("browsePeople");
         for (var i = 1, j = choreDoer.length; i < j; i++) {
             var makeItem = document.createElement("li"),
             	makeLink = document.createElement("a"),
@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function () {
             makeLink.href = "#" + linkableName;
             makeLink.innerHTML = itemText;
             makeItem.appendChild(makeLink);
-            doerUL.appendChild(makeItem);
+            doerDiv.appendChild(makeItem);
         }
 
     }
