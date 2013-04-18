@@ -455,7 +455,7 @@ if (document.URL.indexOf("additem") > 1) {
     function showPerson(theDoer) {
 
         // Creates ordered list and appends to newContainer
-            var main = gE(theDoer);
+            var mainUL = document.getElementById(theDoer);
 
         // Steps through each store in localStorage
             for (var i=0, j=localStorage.length; i<j; i++) {
@@ -466,37 +466,21 @@ if (document.URL.indexOf("additem") > 1) {
 
 
             if ((item.who[1] === theDoer) && (item.done[1] === "Not Yet")) {
-console.log(theDoer);
 
             // Creates li for each individual chore
                 var olBullet = document.createElement("li");
-//                olBullet.setAttribute("class", "item");
-                main.appendChild(olBullet);
-
-
-            // Creates new ul so each element of chore will be on own line
-
-//                var itemize = document.createElement("h3"); // changed ul to p
-//                olBullet.appendChild(itemize);
-
-
-
-            // Creates li for edit and delete links for each item
-//                var itemLinks = document.createElement("li");
-
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
 
                     // Creates li for each element of chore
                         var newItem = document.createElement("p");  // changed li to br
+						var itemValue = item[m][0] + " " + item[m][1];
+						newItem.innerHTML = itemValue;
                         olBullet.appendChild(newItem);
 
-                    // Reads and fills in li with data, then appends to ul
-                        var itemValue = item[m][0] + " " + item[m][1];
-                        newItem.innerHTML = itemValue;
-//                        itemize.appendChild(itemLinks);
                     }
+                mainUL.appendChild(olBullet);
 
             }
         }
@@ -565,7 +549,7 @@ console.log(theDoer);
 
 if (document.URL.indexOf("additem") > 1) {
     addChore.addEventListener("click", validate);
-//    showChores.addEventListener("click", showAll);
+    showChores.addEventListener("click", showAll);
     resetChores.addEventListener("click", empty);
     showChoresTop.addEventListener("click", showAll);
     resetChoresTop.addEventListener("click", empty);
