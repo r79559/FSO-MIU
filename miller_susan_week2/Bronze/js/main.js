@@ -15,6 +15,12 @@ window.addEventListener("DOMContentLoaded", function () {
         var theElement = document.getElementById(x);
         return theElement;
     }
+    
+// getElementByTagName and Value Function
+	function gV(y){
+		var theValue = document.getElementByTagName(y)[0].getAttribute("value");
+		return theValue;
+	}    
 
     // shortcut variables
     var addChore = gE("addNew"),
@@ -27,21 +33,25 @@ window.addEventListener("DOMContentLoaded", function () {
         choreDoer = ["Select a Person", "Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
         dateOptions = ["Select a Due Date", "Today", "Tomorrow", "Future"],
         showDoer = gE("browsedoers"),
-        doneValue;
+        doneValue;   
+        
+
 
 /* Create and populate browse chore doers */
     function browseDoers() {
-        var selectLi = gE("doers"),
-            makeSelect = document.createElement("select");
-        makeSelect.setAttribute("id", "choredoer");
-        for (var i = 0, j = choreDoer.length; i < j; i++) {
-            var makeOption = document.createElement("option"),
-                optText = choreDoer[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
+        var doerDiv = gE("doers"),
+            makeList = document.createElement("ul");
+        makeList.setAttribute("id", "choredoer");
+        for (var i = 1, j = choreDoer.length; i < j; i++) {
+            var makeItem = document.createElement("li"),
+                itemText = choreDoer[i];
+                makeList.setAttribute("style", "list-style: none;");    
+            makeItem.setAttribute("value", itemText);
+            makeItem.setAttribute("style", "text-decoration: underline;");
+            makeItem.innerHTML = itemText;
+            makeList.appendChild(makeItem);
         }
-        selectLi.appendChild(makeSelect);
+        doerDiv.appendChild(makeList);
     }
 
 if (document.URL.indexOf("index") > 1) {
@@ -90,7 +100,7 @@ if (document.URL.indexOf("additem") > 1) {
 
 /* End create and populate date options */
 
-
+   	var setDate = gE("duedate"); 
 
 
 // Date function
@@ -549,12 +559,12 @@ if (document.URL.indexOf("additem") > 1) {
     resetChores.addEventListener("click", empty);
     showChoresTop.addEventListener("click", showAll);
     resetChoresTop.addEventListener("click", empty);
-    var setDate = gE("duedate");
+
     setDate.addEventListener("change", chooseDate);
 }
 
 if (document.URL.indexOf("index") > 1 ) {
-	var showDoer = gE("showIt");
+	// var showDoer = gE("choredoer");
     showDoer.addEventListener("click", showPerson);
 }
 
