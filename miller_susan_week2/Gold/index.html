@@ -16,7 +16,7 @@
 
 	<!-- StyleSheets under here -->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-	<link rel = "stylesheet" href="css/style.css" />
+<!--	<link rel = "stylesheet" href="css/style.css" /> -->
 
 	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 	<script src="js/libs/modernizr.custom.min.js"></script>
@@ -27,7 +27,7 @@
 	<div data-role="page" id="home">
 
 		<div data-role="header" data-position="fixed">
-			<img src="images/choretracker.png" alt="choretracker">
+			<img src="images/choretrackersingle.png" alt="choretracker">
 		</div>
 
 		<div data-role="content">
@@ -39,39 +39,168 @@
 				</ul>
 		</div>
 
-		<div data-role="footer" data-position="fixed">
-			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#home" data-role="button" data-icon="home" data-corners="false">Home</a>
-				<a href="#addchore" data-role="button" data-icon="plus" data-corners="false">Add a Chore</a>
-				<a href="#allchores" data-role="button" data-icon="bars" data-corners="false">All Chores</a>
-				<a href="#about" data-role="button" data-icon="info" data-corners="false">About</a>
-			</div>
-		</div>
+		<div data-role="footer" data-position="fixed" data-id="mainFooter">
+			<div data-role="navbar" data-type="horizontal">
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
 	</div>
 
-	<div data-role="page" id="Daughter_A" data-add-back-btn="true">
+<!-- Daughter A Page -->
+
+	<div data-role="page" id="Daughter_AList" data-add-back-btn="true">
 
 		<div data-role="header" data-position="fixed">
 			<h1>Daughter A's Chores</h1>
 		</div>
 
 		<div data-role="content">
-			<ul id = "doohickeys" data-role="listview">
-				<li data-role="list-divider">Foo</li>
-				<li value="things"><a href="#things"><h3>Things</h3></a></li>
-				<li value="stuff"><a href="#stuff">Stuff</a></li>
+			<ul id = "Daughter A" class="choreList" data-role="listview">
+				<li data-role="list-divider">To Do</li>
+
+
 			</ul>
 		</div>
 
-		<div data-role="footer" data-position="fixed">
-			<div data-role="navbar" data-type="horizontal">
-				<a href="#home" data-icon="home" data-corners="false">Home</a>
-				<a href="#addchore" data-icon="plus" data-corners="false">Add a Chore</a>
-				<a href="#allchores" data-icon="bars" data-corners="false">All Chores</a>
-				<a href="#about" data-icon="info" data-corners="false">About</a>
-			</div>
-		</div>
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
 	</div>
+
+<!-- End Daughter A Page -->
+
+<!-- Daughter B Page -->
+
+	<div data-role="page" id="Daughter_BList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Daughter B's Chores</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Daughter B"   data-role="listview">
+				<li data-role="list-divider">To Do</li>
+
+
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Daughter B Page -->
+
+<!-- Mom Page -->
+
+	<div data-role="page" id="MomList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Mom's Chores</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Mom"   data-role="listview">
+				<li data-role="list-divider">To Do</li>
+
+
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Mom Page -->
+
+<!-- Papa Page -->
+
+	<div data-role="page" id="PapaList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Papa's Chores</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Papa" data-role="listview">
+				<li data-role="list-divider">To Do</li>
+
+
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Papa Page -->
+
+<!-- Anyone Page -->
+
+	<div data-role="page" id="AnyoneList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Anyone's Chores</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Anyone"   data-role="listview">
+				<li data-role="list-divider">To Do</li>
+
+
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Anyone Page -->
+
 	<!-- JavaScript under here -->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
