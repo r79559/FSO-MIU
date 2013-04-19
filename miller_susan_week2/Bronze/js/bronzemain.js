@@ -29,30 +29,40 @@ window.addEventListener("DOMContentLoaded", function () {
         doneValue;
 
 /* Create and populate browse chore doers */
+/*
     function browseDoers() {
         var doerDiv = gE("browsePeople");
         for (var i = 1, j = choreDoer.length; i < j; i++) {
-            var makeItem = document.createElement("li"),
+            var makeItem = document.createElement("div"),
             	makeLink = document.createElement("a"),
                 itemText = choreDoer[i],
                 linkableName = itemText.replace(" ", "_");
+              if ((i == 1) || (i == 4)) {
+	              makeItem.setAttribute("class", "ui-block-a");
+              }  else if ((i == 2) || (i == 5)) {
+	              makeItem.setAttribute("class", "ui-block-b");
+              }  else if ((i == 3) || (i == 6)) {
+	              makeItem.setAttribute("class", "ui-block-c");
+              }
+
 			makeItem.setAttribute("value", itemText);
             makeLink.href = "#" + linkableName + "List";
-            getImage(choreDoer[i], makeItem, "left", "30px");
+            getImage(choreDoer[i], makeItem, "center");
             makeLink.innerHTML = itemText;
             makeItem.appendChild(makeLink);
             doerDiv.appendChild(makeItem);
         }
 
-        $(gE("browsePeople")).listview('refresh');
+        $(gE("browsePeople")).listview('refresh'); // No way to refresh dynamically created thumbnail grid? Boo!
 
     }
+*/
 
 	if (document.URL.indexOf("index") > 1) {
-		browseDoers();
 		eachPerson();
 		allChores();
 	}
+
 
 
 /* End create and populate browse chore doers */
@@ -465,13 +475,14 @@ if (document.URL.indexOf("additem") > 1) {
             // Creates li for each individual chore
                 var olBullet = document.createElement("li");
                 olBullet.setAttribute("class", "item");
+//                newUL.appendChild(olBullet);
 
             // Gets data fro localStorage back into an object
                 var key = localStorage.key(i);
                 var value = localStorage.getItem(key);
                 var item = JSON.parse(value);
 
-                getImage(item.who[1], olBullet, "left", "80px");
+                getImage(item.who[1], olBullet, "left");
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
@@ -495,15 +506,13 @@ if (document.URL.indexOf("additem") > 1) {
         }
     }
 
+
+
 // Shows chores for specific person
     function showPerson(theDoer) {
 
-        // Pins down where to add the list
-            var mainUL = document.getElementById(theDoer),
-            	mainDiv = document.createElement("div");
-	            mainDiv.setAttribute("data-role", "collapsible-set");
-	            mainDiv.setAttribute("data-inset", "false");
-
+        // Creates ordered list and appends to newContainer
+            var mainUL = document.getElementById(theDoer);
 
         // Steps through each store in localStorage
             for (var i=0, j=localStorage.length; i<j; i++) {
@@ -512,40 +521,27 @@ if (document.URL.indexOf("additem") > 1) {
                 var value = localStorage.getItem(key);
                 var item = JSON.parse(value);
 
+
             if ((item.who[1] === theDoer) && (item.done[1] === "Not Yet")) {
 
             // Creates li for each individual chore
-                var choreDiv = document.createElement("div");
-                choreDiv.setAttribute("data-role", "collapsible")
-
+                var olBullet = document.createElement("li");
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
 
                     // Creates li for each element of chore
-                          // changed li to br
-
-                        if (item[m][0] === "Chore Name: ") {
-	                        var itemValue = item[m][1],
-	                        	headerItem = document.createElement("h4");
-	                        headerItem.innerHTML = itemValue;
-	                        choreDiv.appendChild(headerItem);
-                        } else {
-                        var newItem = document.createElement("p"),
-						 	itemValue = item[m][0] + " " + item[m][1];
+                        var newItem = document.createElement("p");  // changed li to br
+						var itemValue = item[m][0] + " " + item[m][1];
 						newItem.innerHTML = itemValue;
-                        choreDiv.appendChild(newItem);
-                        }
+                        olBullet.appendChild(newItem);
 
                     }
-                mainDiv.appendChild(choreDiv);
+                mainUL.appendChild(olBullet);
+
             }
-
-            mainUL.appendChild(mainDiv);
-
         }
 
-        $(gE("theDoer")).listview('refresh');
 
     }
 

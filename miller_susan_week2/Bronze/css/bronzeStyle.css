@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-// write your CSS in here
-=======
 /* Susan R. Miller
    MiU 1304 Week 1 */
 
@@ -88,8 +85,7 @@ a.small {
 }
 
 p {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 p.input {
@@ -183,4 +179,3 @@ p.input {
     opacity: 0.8;
 }
 
->>>>>>> master
