@@ -1,6 +1,6 @@
 // Susan R. Miller
 // MiU 1304
-// Week 1
+// Week 2
 //
 
 var json = {
