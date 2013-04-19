@@ -34,10 +34,11 @@ window.addEventListener("DOMContentLoaded", function () {
         for (var i = 1, j = choreDoer.length; i < j; i++) {
             var makeItem = document.createElement("li"),
             	makeLink = document.createElement("a"),
-                itemText = choreDoer[i]
+                itemText = choreDoer[i],
                 linkableName = itemText.replace(" ", "_");
 			makeItem.setAttribute("value", itemText);
             makeLink.href = "#" + linkableName + "List";
+            getImage(choreDoer[i], makeItem, "left", "30px");
             makeLink.innerHTML = itemText;
             makeItem.appendChild(makeLink);
             doerDiv.appendChild(makeItem);
@@ -50,6 +51,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	if (document.URL.indexOf("index") > 1) {
 		browseDoers();
 		eachPerson();
+		allChores();
 	}
 
 
@@ -275,13 +277,12 @@ if (document.URL.indexOf("additem") > 1) {
 
 // Adds Image
 
-	function getImage(doerName, itemize) {
-		var imgLi = document.createElement("li");
-		itemize.appendChild(imgLi);
+	function getImage(doerName, field, align, size) {
 		var newImg = document.createElement("img"),
 			setSrc = newImg.setAttribute("src", "images/" + doerName + ".png")
-			setSize = newImg.setAttribute("height", "50px");
-		imgLi.appendChild(newImg);
+			setSize = newImg.setAttribute("height", size);
+		newImg.setAttribute("align", align);
+		field.appendChild(newImg);
 
 	}
 
@@ -425,7 +426,7 @@ if (document.URL.indexOf("additem") > 1) {
             // Creates li for edit and delete links for each item
                 var itemLinks = document.createElement("li");
 
-                getImage(item.who[1], itemize);
+                getImage(item.who[1], itemize, "left", "80px");
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
@@ -451,11 +452,58 @@ if (document.URL.indexOf("additem") > 1) {
         }
     }
 
+// Shows all chores
+    function allChores() {
+        if (localStorage.length >= 1) {
+
+        // Pins down where to add the list
+            var mainUL = gE("viewAll");
+
+        // Steps through each store in localStorage
+            for (var i=0, j=localStorage.length; i<j; i++) {
+
+            // Creates li for each individual chore
+                var olBullet = document.createElement("li");
+                olBullet.setAttribute("class", "item");
+
+            // Gets data fro localStorage back into an object
+                var key = localStorage.key(i);
+                var value = localStorage.getItem(key);
+                var item = JSON.parse(value);
+
+                getImage(item.who[1], olBullet, "left", "80px");
+
+                // Itemizes specific data elements of chore
+                    for (var m in item) {
+
+                    // Creates li for each element of chore
+                        var newItem = document.createElement("p"),
+                            itemValue = item[m][0] + " " + item[m][1];
+                        newItem.innerHTML = itemValue;
+                        olBullet.appendChild(newItem);
+                    }
+
+                    mainUL.appendChild(olBullet);
+
+            }
+
+
+    // Returns alert if localStorage is empty
+        } else {
+            alert("There is no data in localStorage so default data was added.");
+            insertJSON();
+        }
+    }
+
 // Shows chores for specific person
     function showPerson(theDoer) {
 
-        // Creates ordered list and appends to newContainer
-            var mainUL = document.getElementById(theDoer);
+        // Pins down where to add the list
+            var mainUL = document.getElementById(theDoer),
+            	mainDiv = document.createElement("div");
+	            mainDiv.setAttribute("data-role", "collapsible-set");
+	            mainDiv.setAttribute("data-inset", "false");
+
 
         // Steps through each store in localStorage
             for (var i=0, j=localStorage.length; i<j; i++) {
@@ -464,27 +512,40 @@ if (document.URL.indexOf("additem") > 1) {
                 var value = localStorage.getItem(key);
                 var item = JSON.parse(value);
 
-
             if ((item.who[1] === theDoer) && (item.done[1] === "Not Yet")) {
 
             // Creates li for each individual chore
-                var olBullet = document.createElement("li");
+                var choreDiv = document.createElement("div");
+                choreDiv.setAttribute("data-role", "collapsible")
+
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
 
                     // Creates li for each element of chore
-                        var newItem = document.createElement("p");  // changed li to br
-						var itemValue = item[m][0] + " " + item[m][1];
+                          // changed li to br
+
+                        if (item[m][0] === "Chore Name: ") {
+	                        var itemValue = item[m][1],
+	                        	headerItem = document.createElement("h4");
+	                        headerItem.innerHTML = itemValue;
+	                        choreDiv.appendChild(headerItem);
+                        } else {
+                        var newItem = document.createElement("p"),
+						 	itemValue = item[m][0] + " " + item[m][1];
 						newItem.innerHTML = itemValue;
-                        olBullet.appendChild(newItem);
+                        choreDiv.appendChild(newItem);
+                        }
 
                     }
-                mainUL.appendChild(olBullet);
-
+                mainDiv.appendChild(choreDiv);
             }
+
+            mainUL.appendChild(mainDiv);
+
         }
 
+        $(gE("theDoer")).listview('refresh');
 
     }
 
