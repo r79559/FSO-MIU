@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<!-- Susan R. Miller, MIU 1304, Week 2 -->
+
+	<meta charset="utf-8">
+
+	<title>Chore Champ</title>
+
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<link rel = "stylesheet" href="css/mobileStyle.css" />
+
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" id="home" align="center">
+
+		<a href="bronzeadditem.html" rel="external">
+			<div data-role="header" data-position="fixed" data-theme="c">
+				<img src="images/choretracker.png" alt="chorechamp">
+			</div>
+		</a>
+
+		<div data-role="content">
+
+			<div data-role="navbar" class="ui-bar-b">
+				Select a Person to See Their Chores
+			</div>
+						<div id="browsePeople" class = "ui-grid-b" data-filter="true">
+							<a href="#Daughter_AList">
+								<div class = "grid ui-block-a">
+									<img src = "images/Daughter A.png" height="80px">
+								</div>
+							</a>
+							<a href="#Daughter_BList">
+								<div class = "grid ui-block-b">
+									<img src = "images/Daughter B.png" height="80px">
+								</div>
+							</a>
+							<a href="#MomList">
+								<div class = "grid ui-block-c">
+									<img src = "images/Mom.png" height="80px">
+								</div>
+							</a>
+							<a href="#PapaList">
+								<div class = "grid ui-block-a">
+									<img src = "images/Papa.png" height="80px">
+								</div>
+							</a>
+							<a href="#AnyoneList">
+								<div class = "grid ui-block-b">
+									<img src = "images/Anyone.png" height="80px">
+								</div>
+							</a>
+								<div class = "grid ui-block-c">
+									<!-- Placeholder Block -->
+								</div>
+
+						</div>
+
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter">
+			<div data-role="navbar" data-type="horizontal">
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- Daughter A Page -->
+
+	<div data-role="page" id="Daughter_AList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Chore Champ</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Daughter A" data-role="listview" data-filter="true">
+				<li data-role="list-divider">Daughter A's To Do</li>
+					<!-- Dynamically Populated -->
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Daughter A Page -->
+
+<!-- Daughter B Page -->
+
+	<div data-role="page" id="Daughter_BList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Chore Champ</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Daughter B"   data-role="listview" data-filter="true">
+				<li data-role="list-divider">Daughter B's To Do</li>
+					<!-- Dynamically Populated -->
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Daughter B Page -->
+
+<!-- Mom Page -->
+
+	<div data-role="page" id="MomList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Chore Champ</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Mom"   data-role="listview" data-filter="true">
+				<li data-role="list-divider">Mom's To Do</li>
+					<!-- Dynamically Populated -->
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Mom Page -->
+
+<!-- Papa Page -->
+
+	<div data-role="page" id="PapaList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Chore Champ</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Papa" data-role="listview" data-filter="true">
+				<li data-role="list-divider">Papa's To Do</li>
+					<!-- Dynamically Populated -->
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Papa Page -->
+
+<!-- Anyone Page -->
+
+	<div data-role="page" id="AnyoneList" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Chore Champ</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Anyone"   data-role="listview" data-filter="true">
+				<li data-role="list-divider">Anyone's Can Do</li>
+					<!-- Dynamically Populated -->
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Anyone Page -->
+
+<!-- All Chores Page -->
+
+	<div data-role="page" id="allchores" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>Chore Champ</h1>
+		</div>
+
+		<div data-role="content">
+
+			<ul id="viewAll"data-role="listview" data-inset="false" data-filter="true">
+			<li data-role="list-divider">All Chores</li>
+
+			<!-- Entire Chore List Goes Here -->
+
+			</ul>
+
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End All Chores Page -->
+
+<!-- About Page -->
+
+	<div data-role="page" id="about" data-add-back-btn="true">
+
+		<div data-role="header" data-position="fixed">
+			<h1>About this App</h1>
+		</div>
+
+		<div data-role="content">
+			<ul id = "Anyone"   data-role="listview" data-filter="true">
+				<li data-role="list-divider">About this App</li>
+				<li>Created by Susan R. Miller</li>
+				<li>Developed for MIU 1304</li>
+				<li>Broom graphic used on limited license from iStockPhoto.com</li>
+				<li data-role="list-divider">Links</li>
+				<li><a href="https://github.com/r79559/FSO-MIU.git">Git Repo Link</a></li>
+				<li><a href="../Gold/index.html" rel="external">Local Gold Link</a></li>
+				<li><a href="http://r79559.github.io/FSO-MIU/miller_susan_week2/Gold/index.html">Gold gh-pages</a></li>
+				<li><a href="http://r79559.github.io/FSO-MIU/miller_susan_week2/Bronze/bronzeindex.html">Bronze gh-pages</a></li>
+
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter"> <!-- footer -->
+			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
+					<li><a href="bronzeadditem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End About Page -->
+
+	<!-- JavaScript under here -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script type = "text/javascript" src = "js/bronzeMain.js"></script>
+		<script type = "text/javascript" src = "js/json.js"></script>
+</body>
+</html>
