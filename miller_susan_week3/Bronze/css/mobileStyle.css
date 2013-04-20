@@ -1,0 +1,28 @@
+
+/* Susan R. Miller
+   MiU 1304 Week 2 */
+
+
+p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+img {
+	padding-left: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+h5 {
+	padding: 0px;
+	margin: 0px;
+}
+
+.grid {
+	height: 100px;
+	width: 100px;
+	padding: 5px;
+	border: 1px solid rgba(0,0,0,0.5);
+}
+
