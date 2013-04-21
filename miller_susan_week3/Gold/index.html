@@ -24,9 +24,11 @@
 </head>
 <body>
 
+<!-- Home page -->
+
 	<div data-role="page" id="home">
 
-		<a href="additem.html" rel="external">
+		<a href="#addchore">
 			<div data-role="header" data-position="fixed" data-theme="c">
 				<img src="images/choretracker.png" alt="chorechamp">
 			</div>
@@ -45,13 +47,15 @@
 			<div data-role="navbar" data-type="horizontal">
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
 			</div> <!-- navbar -->
 		</div> <!-- footer -->
 	</div>
+
+<!-- End Home Page -->
 
 <!-- Daughter A Page -->
 
@@ -72,7 +76,7 @@
 			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
@@ -101,7 +105,7 @@
 			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
@@ -130,7 +134,7 @@
 			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
@@ -159,7 +163,7 @@
 			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
@@ -188,7 +192,7 @@
 			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
@@ -197,6 +201,105 @@
 	</div>
 
 <!-- End Anyone Page -->
+
+
+<!-- Add Chore Form page -->
+
+	<div data-role="page" id="addchore">
+
+		<a href="#addchore">
+			<div data-role="header" data-position="fixed" data-theme="c">
+				<img src="images/choretracker.png" alt="chorechamp">
+			</div>
+		</a>
+
+		<div data-role="content">
+
+			<form action = "#" method = "post" id = "choreform">
+
+				<fieldset>
+					<legend>
+						Chore Info
+					</legend>
+
+					<div data-role = "fieldcontain">
+						<label for = "chorename">
+							Chore
+						</label>
+						<input type = "text" id = "chorename" />
+					</div>
+
+					<div data-role = "fieldcontain" id = "person">
+						<label for = "choredoer">
+							Name
+						</label>
+
+						<!-- Dynamically populated dropdown -->
+
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>
+						Chore Details
+					</legend>
+
+					<div data-role = "fieldcontain">
+						<label for = "duedate">
+							Due Date
+						</label>
+						<ul id = "datevalue">
+							<li id = "date">
+
+								<!-- Dynamically populated dropdown -->
+
+							</li>
+					</div>
+							<li id = "dateselect" style = "display:none;">
+								<input id = "future" type = "date" name = "future" />
+							</li>
+						</ul>
+
+					<div data-role = "fieldcontain">
+						<label for = "difficulty">
+							Difficulty
+						</label>
+						<input type = "range" id = "difficulty" name = "difficulty" id = "slider-fill" step = "1" value = "5" min = "1" max = "10" />
+					</div>
+
+					<div data-role = "fieldcontain">
+						<label for = "done">
+							Are You Done?
+						</label>
+						<div class = "flipSwitch">
+							<select name = "done" id = "done" data-role = "slider">
+								<option value = "Not Yet">Not Yet</option>
+								<option value = "Yessiree!">Yessiree!</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+
+
+			</form>
+
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="mainFooter">
+			<div data-role="navbar" data-type="horizontal">
+				<ul>
+					<li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active ui-stat-persist">Home</a></li>
+					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
+					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+				</ul>
+			</div> <!-- navbar -->
+		</div> <!-- footer -->
+	</div>
+
+<!-- End Add Chore Page -->
+
+
 
 <!-- All Chores Page -->
 
@@ -259,7 +362,7 @@
 			<div data-role="navbar" data-type="horizontal"> <!-- persistent navbar -->
 				<ul>
 					<li><a href="#home" data-icon="home" data-iconpos="top">Home</a></li>
-					<li><a href="additem.html" data-icon="plus" data-iconpos="top">Add Chore</a></li>
+					<li><a href="#addchore" data-icon="plus" data-iconpos="top">Add Chore</a></li>
 					<li><a href="#allchores" data-icon="bars" data-iconpos="top">All Chores</a></li>
 					<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
 				</ul>
@@ -272,6 +375,7 @@
 	<!-- JavaScript under here -->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-	<script type = "text/javascript" src = "js/main.js"></script>"
+	<script type = "text/javascript" src = "js/main.js"></script>
+	<script type = "text/javascript" src = "js/json.js"></script>
 </body>
 </html>

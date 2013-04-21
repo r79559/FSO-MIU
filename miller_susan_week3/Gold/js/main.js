@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
         showDoer = gE("browsedoers"),
         doneValue;
 
-/* Create and populate browse chore doers */
+/* Create and populate browse chore doers - used with JQM */
     function browseDoers() {
         var doerDiv = gE("browsePeople");
         for (var i = 1, j = choreDoer.length; i < j; i++) {
@@ -52,6 +52,8 @@ window.addEventListener("DOMContentLoaded", function () {
 		browseDoers();
 		eachPerson();
 		allChores();
+		listDoers();
+		listDates();
 	}
 
 
@@ -275,7 +277,7 @@ if (document.URL.indexOf("additem") > 1) {
 	}
 
 
-// Adds Image
+// Adds Image - used with JQM
 
 	function getImage(doerName, field, align, size) {
 		var newImg = document.createElement("img"),
@@ -379,7 +381,7 @@ if (document.URL.indexOf("additem") > 1) {
         itemLinks.appendChild(deleteLink);
     }
 
-// Autofill with JSON data
+// Autofill with JSON data - used with JQM
 	function insertJSON() {
 		// store info from JSON.js
 		for (var n in json) {
@@ -452,7 +454,7 @@ if (document.URL.indexOf("additem") > 1) {
         }
     }
 
-// Shows all chores
+// Shows all chores - used with JQM
     function allChores() {
         if (localStorage.length >= 1) {
 
@@ -495,7 +497,7 @@ if (document.URL.indexOf("additem") > 1) {
         }
     }
 
-// Shows chores for specific person
+// Shows chores for specific person - used with JQM
     function showPerson(theDoer) {
 
         // Pins down where to add the list
@@ -551,7 +553,7 @@ if (document.URL.indexOf("additem") > 1) {
 
 
 
-// Shows chores for specific person
+// Shows chores for specific person - used with JQM
     function eachPerson() {
 
 		var stepOne = document.getElementsByTagName("ul");
@@ -618,9 +620,6 @@ if (document.URL.indexOf("additem") > 1) {
     setDate.addEventListener("change", chooseDate);
 }
 
-if (document.URL.indexOf("index") > 1 ) {
-	// var showDoer = gE("choredoer");
-//    showDoer.addEventListener("click", showPerson);
-}
+
 
 }); /* Closes DOM load check function */

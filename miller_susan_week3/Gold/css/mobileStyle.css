@@ -8,8 +8,17 @@ p {
     padding-right: 10px;
 }
 
+li {
+	list-style-type: none;
+}
+
 img {
 	padding-left: 10px;
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
+
+.ui-field-contain div.ui-slider-switch {
+	width: 15em;
+}
+
