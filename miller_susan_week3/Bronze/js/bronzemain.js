@@ -152,6 +152,7 @@ if (document.URL.indexOf("additem") > 1) {
                 doneValue = radios[i].value;
             }
         }
+        return doneValue;
     }
 
 // Toggles what shows when
@@ -334,19 +335,11 @@ if (document.URL.indexOf("additem") > 1) {
 
     // Assures key gets passed through
         editSubmit.key = this.key;
-
-
-
     }
 
 // Delete specific chore
     function deleteChore() {
-
-    // Checks which radio button is selected
-        radioCheck();
-    // Assures chore has been done and confirms deletion
-        if (doneValue === "Yessiree!") {
-            var ask = confirm("Looks like you're done!  Ready to delete this chore?");
+       var ask = confirm("Are you sure you're ready to delete this chore?");
             if(ask){
                 localStorage.removeItem(this.key);
                 window.location.reload();
@@ -359,10 +352,6 @@ if (document.URL.indexOf("additem") > 1) {
                     alert("That's okay.  Let me know when you're ready to delete it.");
                 }
             }
-    // Doesn't allow deletion if chore not marked as completed
-        } else {
-            alert("Oops!  Looks like you're not done with this chore yet!\nYou can't delete it quite yet.");
-        }
     }
 
 // Dynamically creates item links to edit and delete

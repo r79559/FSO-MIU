@@ -308,7 +308,7 @@ if (document.URL.indexOf("additem") > 1) {
         gE("difficulty").value = item.effort[1];
 
     // Loop required to determine which (if any) radios were checked
-        var radios = document.forms[0].done;
+        var radios = document.forms[0].status;
         for (var i = 0; i<radios.length; i++) {
             if (radios[i].value === "Not Yet" && item.done[1] === "Not Yet") {
                 radios[i].setAttribute("checked", "checked");
