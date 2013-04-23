@@ -215,48 +215,55 @@
 
 		<div data-role="content">
 
-			<form action = "#" method = "post" id = "choreform">
+			<form action = "" method = "post" id = "choreform">
 
-				<fieldset>
-					<legend>
-						Chore Info
-					</legend>
-
+<!--
 					<div data-role = "fieldcontain">
-						<label for = "chorename">
-							Chore
-						</label>
-						<input type = "text" id = "chorename" />
-					</div>
-
-					<div data-role = "fieldcontain" id = "person">
 						<label for = "choredoer">
-							Name
+							Name:
 						</label>
 
 						<!-- Dynamically populated dropdown -->
+<!--
 
 					</div>
-				</fieldset>
-
-				<fieldset>
-					<legend>
-						Chore Details
-					</legend>
+-->
 
 					<div data-role = "fieldcontain">
-						<label for = "duedate">
-							Due Date
-						</label>
-						<ul id = "datevalue">
-							<li id = "date">
+						<fieldset data-role = "controlgroup" id = "person">
+							<legend>
+								Who:
+							</legend>
+							<div id = "person">
 
-								<!-- Dynamically populated dropdown -->
-
-							</li>
+							</div>
+						</fieldset>
 					</div>
+
+					<div data-role = "fieldcontain">
+						<label for = "chorename">
+							Chore:
+						</label>
+						<input type = "text" name = "chorename" id = "chorename" />
+					</div>
+
+<!--
+					<div data-role = "fieldcontain">
+						<label for = "choredetails">
+							Details:
+						</label>
+						<textarea></textarea>
+					</div>
+-->
+
+					<div data-role = "fieldcontain" id = "date">
+						<label for = "duedate">
+							Due Date:
+						</label>
+					</div>
+						<ul>
 							<li id = "dateselect" style = "display:none;">
-								<input id = "future" type = "date" name = "future" />
+								<input type = "date" id = "future" name = "future" />
 							</li>
 						</ul>
 
@@ -264,7 +271,15 @@
 						<label for = "difficulty">
 							Difficulty
 						</label>
-						<input type = "range" id = "difficulty" name = "difficulty" id = "slider-fill" step = "1" value = "5" min = "1" max = "10" />
+						<input type = "range" id = "difficulty" name = "difficulty" id = "slider-fill" value = "5" min = "1" max = "10" />
+					</div>
+
+					<div data-role = "fieldcontain">
+						<fieldset data-role = "controlgroup">
+							<legend>
+
+							</legend>
+						</fieldset>
 					</div>
 
 					<div data-role = "fieldcontain">
@@ -273,13 +288,21 @@
 						</label>
 						<div class = "flipSwitch">
 							<select name = "done" id = "done" data-role = "slider">
-								<option value = "Not Yet">Not Yet</option>
-								<option value = "Yessiree!">Yessiree!</option>
+								<option value = "no">Not Yet</option>
+								<option value = "yes">Yessiree!</option>
 							</select>
 						</div>
 					</div>
-				</fieldset>
 
+					<div data-role = "fieldcontain">
+						<fieldset class = "ui-grid-a">
+							<div class = "ui-block-a">
+								<input type = "reset" value = "Reset" data-theme = "a" />
+							</div>
+							<div class = "ui-block-b">
+								<input type = "submit" value = "Submit" data-theme = "b" />
+							</div>
+					</div>
 
 			</form>
 
@@ -307,6 +330,7 @@
 
 		<div data-role="header" data-position="fixed">
 			<h1>Chore Champ</h1>
+			<a href="" data-icon="delete" class="ui-btn-right" id = "resetAll">Delete ALL</a>
 		</div>
 
 		<div data-role="content">

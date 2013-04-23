@@ -61,17 +61,19 @@ window.addEventListener("DOMContentLoaded", function () {
 
 /* Create and populate chore doers */
     function listDoers() {
-        var selectLi = gE("person"),
-            makeSelect = document.createElement("select");
-        makeSelect.setAttribute("id", "choredoer");
+        var selectDiv = gE("person"),
+            makeInput = document.createElement("input");
         for (var i = 0, j = choreDoer.length; i < j; i++) {
-            var makeOption = document.createElement("option"),
-                optText = choreDoer[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
+            var optText = choreDoer[i];
+            makeInput.setAttribute("type", "radio");
+            makeInput.setAttribute("name", "choredoer");
+	        makeInput.setAttribute("value", optText);
+	        makeInput.setAttribute("id", optText);
+	        makeInput.innerHTML = optText;
+	        selectDiv.appendChild(makeInput);
+console.log(optText);
         }
-        selectLi.appendChild(makeSelect);
+
     }
 
 /* End create and populate chore doers */
@@ -80,6 +82,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function listDates() {
         var selectLi = gE("date"),
             makeSelect = document.createElement("select");
+        makeSelect.setAttribute("name", "duedate");
         makeSelect.setAttribute("id", "duedate");
         for (var i = 0, j = dateOptions.length; i < j; i++) {
             var makeOption = document.createElement("option"),
@@ -91,11 +94,6 @@ window.addEventListener("DOMContentLoaded", function () {
         selectLi.appendChild(makeSelect);
     }
 
-
-if (document.URL.indexOf("additem") > 1) {
-    listDoers(); // Makes the drop-down happen.
-    listDates(); // Makes the drop-down happen.
-    }
 
 /* End create and populate date options */
 
@@ -175,8 +173,8 @@ if (document.URL.indexOf("additem") > 1) {
 		var rawDate = gE("datevalue").getAttribute("value");
 		if (rawDate.charAt(4) === "-") {
 			var brokenDate = rawDate.split("-");
-			if (brokenDate[1].length<2) {brokenDate[1] = "0" + brokenDate[1];};
-			if (brokenDate[2].length<2) {brokenDate[2] = "0" + brokenDate[2];};
+			if (brokenDate[0].length == 1) {brokenDate[0] = "0" + brokenDate[0];};
+			if (brokenDate[2].length == 1) {brokenDate[2] = "0" + brokenDate[2];};
 			var reordered = brokenDate[1] + "/" + brokenDate[2] + "/" + brokenDate[0];
 			gE("datevalue").setAttribute("value", reordered);
 		}
@@ -272,6 +270,10 @@ if (document.URL.indexOf("additem") > 1) {
 
 	function dateCalVal(storedDate) {
 		var brokenCalVal = storedDate.split("/"),
+		    reorderedCalVal
+		    if (brokenCalVal[0].length == 1) {brokenCalVal[0] = "0" + brokenCalVal[0];};
+		    if (brokenCalVal[2].length == 1) {brokenCalVal[2] = "0" + brokenCalVal[2];}
+
 		    reorderedCalVal = brokenCalVal[2] + "-" + brokenCalVal[0] + "-" + brokenCalVal[1];
 		    gE("datevalue").setAttribute("value", reorderedCalVal);
 	}
@@ -475,6 +477,7 @@ if (document.URL.indexOf("additem") > 1) {
 
                 getImage(item.who[1], olBullet, "left", "80px");
 
+
                 // Itemizes specific data elements of chore
                     for (var m in item) {
 
@@ -483,11 +486,11 @@ if (document.URL.indexOf("additem") > 1) {
                             itemValue = item[m][0] + " " + item[m][1];
                         newItem.innerHTML = itemValue;
                         olBullet.appendChild(newItem);
-                    }
+                    } // Closes Each Item For Loop
 
                     mainUL.appendChild(olBullet);
 
-            }
+            } // Closes localStorage For Loop
 
 
     // Returns alert if localStorage is empty
@@ -495,7 +498,37 @@ if (document.URL.indexOf("additem") > 1) {
             alert("There is no data in localStorage so default data was added.");
             insertJSON();
         }
-    }
+    } // Closes All Chores Function
+
+// Sorted Newsfeed
+	function sortStorage() {
+		var sortArray = [];
+		for (var a=0, b=localStorage.length; a<b; a++) {
+			var olBullet = document.createElement("li");
+			olBullet.setAttribute("class", "item");
+
+			var key = localStorage.key(a);
+			var value = localStorage.getItem(key);
+			var item = JSON.parse(value);
+			sortArray.push(item);
+
+		}	// Closes localStorage For Loop
+
+			sortArray.sort(function(c,d){
+				if (c.date[1] < d.date[1]) return -1;
+				if (c.date[1] > d.date[1]) return 1;
+				return 0;
+			})
+																// SORTED!  Now to get it back out!
+		for (var e = 0, f = sortArray.length; e < f; e++) {
+
+		}
+
+	}
+
+
+
+sortStorage();
 
 // Shows chores for specific person - used with JQM
     function showPerson(theDoer) {
@@ -618,6 +651,10 @@ if (document.URL.indexOf("additem") > 1) {
     resetChoresTop.addEventListener("click", empty);
 
     setDate.addEventListener("change", chooseDate);
+}
+
+if (document.URL.indexOf("index") > 1) {
+	resetChores.addEventListener("click", empty);
 }
 
 
