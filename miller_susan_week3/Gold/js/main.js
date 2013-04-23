@@ -54,6 +54,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		allChores();
 		listDoers();
 		listDates();
+		sortStorage();
 	}
 
 
@@ -71,7 +72,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	        makeInput.setAttribute("id", optText);
 	        makeInput.innerHTML = optText;
 	        selectDiv.appendChild(makeInput);
-console.log(optText);
         }
 
     }
@@ -502,10 +502,13 @@ console.log(optText);
 
 // Sorted Newsfeed
 	function sortStorage() {
+		var mainUL = gE("viewAll");
 		var sortArray = [];
 		for (var a=0, b=localStorage.length; a<b; a++) {
+/*
 			var olBullet = document.createElement("li");
 			olBullet.setAttribute("class", "item");
+*/
 
 			var key = localStorage.key(a);
 			var value = localStorage.getItem(key);
@@ -518,17 +521,41 @@ console.log(optText);
 				if (c.date[1] < d.date[1]) return -1;
 				if (c.date[1] > d.date[1]) return 1;
 				return 0;
-			})
+			})  // Closes Sort Loop
+
+console.log(sortArray)
+
 																// SORTED!  Now to get it back out!
-		for (var e = 0, f = sortArray.length; e < f; e++) {
+		for (c = 0, d = sortArray.length; c < d; c++) {
 
-		}
+		// Creates li for each individual chore
+	        var olBullet = document.createElement("li");
+	        olBullet.setAttribute("class", "item");
 
+			var obj = sortArray[c];
+	                // Itemizes specific data elements of chore
+	                    for (var f in obj) {
+
+	                    // Creates li for each element of chore
+	                        var newItem = document.createElement("p"),
+	                            itemValue = obj[f][0] + " " + obj[f][1];
+	                        newItem.innerHTML = itemValue;
+	                        olBullet.appendChild(newItem);
+	                    } // Closes Each Item For Loop
+
+	                    mainUL.appendChild(olBullet);
+
+            } // Closes localStorage For Loop         }
 	}
 
 
 
-sortStorage();
+
+
+
+
+
+
 
 // Shows chores for specific person - used with JQM
     function showPerson(theDoer) {
