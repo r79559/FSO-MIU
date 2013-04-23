@@ -18,7 +18,7 @@ var json = {
 		"chore": ["Chore Name: ", "Polish trophy"],
 		"who": ["Person Responsible: ", "Papa"],
 		"when": ["When Due: ", "Future"],
-		"date": ["Date Due ", "05/8/2013"],
+		"date": ["Date Due ", "05/08/2013"],
 		"effort": ["Level of Difficulty: ", "3"],
 		"done": ["Is it Done? ", "Not Yet"]
 	},
@@ -63,7 +63,7 @@ var json = {
 		"chore": ["Chore Name: ", "Dust upstairs"],
 		"who": ["Person Responsible: ", "Daughter B"],
 		"when": ["When Due: ", "Future"],
-		"date": ["Date Due ", "05/3/2013"],
+		"date": ["Date Due ", "05/03/2013"],
 		"effort": ["Level of Difficulty: ", "7"],
 		"done": ["Is it Done? ", "Not Yet"]
 	},
@@ -90,7 +90,7 @@ var json = {
 		"chore": ["Chore Name: ", "Make bed"],
 		"who": ["Person Responsible: ", "Daughter A"],
 		"when": ["When Due: ", "Future"],
-		"date": ["Date Due ", "04/9/2013"],
+		"date": ["Date Due ", "04/09/2013"],
 		"effort": ["Level of Difficulty: ", "2"],
 		"done": ["Is it Done? ", "Not Yet"]
 	},
@@ -108,7 +108,7 @@ var json = {
 		"chore": ["Chore Name: ", "Commit to Git"],
 		"who": ["Person Responsible: ", "Mom"],
 		"when": ["When Due: ", "Future"],
-		"date": ["Date Due ", "04/8/2013"],
+		"date": ["Date Due ", "04/08/2013"],
 		"effort": ["Level of Difficulty: ", "2"],
 		"done": ["Is it Done? ", "Not Yet"]
 	},
@@ -162,7 +162,7 @@ var json = {
 		"chore": ["Chore Name: ", "Catch up on The Walking Dead"],
 		"who": ["Person Responsible: ", "Mom"],
 		"when": ["When Due: ", "Future"],
-		"date": ["Date Due ", "05/6/2013"],
+		"date": ["Date Due ", "05/06/2013"],
 		"effort": ["Level of Difficulty: ", "1"],
 		"done": ["Is it Done? ", "Not Yet"]
 	},
