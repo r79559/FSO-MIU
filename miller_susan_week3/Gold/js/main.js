@@ -1,7 +1,7 @@
 //
 // Author: Susan R. Miller
 // Course: MiU1304
-// Week 2
+// Week 3
 //
 //
 //
@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
         showDoer = gE("browsedoers"),
         doneValue;
 
-/* Create and populate browse chore doers - used with JQM */
+// Create and populate browse chore doers - used with JQM
     function browseDoers() {
         var doerDiv = gE("browsePeople");
         for (var i = 1, j = choreDoer.length; i < j; i++) {
@@ -51,7 +51,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	if (document.URL.indexOf("index") > 1) {
 		browseDoers();
 		eachPerson();
-		allChores();
 		listDoers();
 		listDates();
 		sortStorage();
@@ -502,6 +501,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // Sorted Newsfeed
 	function sortStorage() {
+
+		if (localStorage.length >= 1) {
+
 		var mainUL = gE("viewAll");
 		var sortArray = [];
 		for (var a=0, b=localStorage.length; a<b; a++) {
@@ -533,19 +535,26 @@ console.log(sortArray)
 	        olBullet.setAttribute("class", "item");
 
 			var obj = sortArray[c];
-	                // Itemizes specific data elements of chore
-	                    for (var f in obj) {
 
-	                    // Creates li for each element of chore
-	                        var newItem = document.createElement("p"),
-	                            itemValue = obj[f][0] + " " + obj[f][1];
-	                        newItem.innerHTML = itemValue;
-	                        olBullet.appendChild(newItem);
-	                    } // Closes Each Item For Loop
+		    getImage(obj.who[1], olBullet, "left", "80px");
+
+                // Itemizes specific data elements of chore
+                    for (var f in obj) {
+
+                    // Creates li for each element of chore
+                        var newItem = document.createElement("p"),
+                            itemValue = obj[f][0] + " " + obj[f][1];
+                        newItem.innerHTML = itemValue;
+                        olBullet.appendChild(newItem);
+                    } // Closes Each Item For Loop
 
 	                    mainUL.appendChild(olBullet);
 
-            } // Closes localStorage For Loop         }
+            } // Closes newItem For Loop
+        } else {
+            alert("There is no data in localStorage so default data was added.");
+            insertJSON();
+        }
 	}
 
 
