@@ -9,19 +9,25 @@
 
 // Home Page Code Start
 
-// getElementById Function
-    function gE(x){
-        var theElement = document.getElementById(x);
-        return theElement;
-    }
 
 $('#home').on('pageinit', function(){
 
 var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"];
 
+// Adds Image - used with JQM
+
+	function getImage(doerName, field, align, size) {
+		var newImg = document.createElement("img"),
+			setSrc = newImg.setAttribute("src", "images/" + doerName + ".png"),
+			setSize = newImg.setAttribute("height", size);
+		newImg.setAttribute("align", align);
+		field.appendChild(newImg);
+
+	}
+
 // Create and populate browse chore doers - used with JQM
     function browseDoers() {
-        var doerDiv = gE("browsePeople");
+        var doerDiv = document.getElementById("browsePeople");
         for (var i = 0, j = choreDoer.length; i < j; i++) {
             var makeItem = document.createElement("li"),
             	makeLink = document.createElement("a"),
@@ -35,20 +41,9 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"];
             doerDiv.appendChild(makeItem);
         }
 
-        $(gE("browsePeople")).listview('refresh');
+        $(document.getElementById("browsePeople")).listview('refresh');
 
     }
-
-// Adds Image - used with JQM
-
-	function getImage(doerName, field, align, size) {
-		var newImg = document.createElement("img"),
-			setSrc = newImg.setAttribute("src", "images/" + doerName + ".png")
-			setSize = newImg.setAttribute("height", size);
-		newImg.setAttribute("align", align);
-		field.appendChild(newImg);
-
-	}
 
 
 // Shows chores for specific person
@@ -73,23 +68,23 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"];
 
             // Creates li for each individual chore
                 var choreDiv = document.createElement("div");
-                choreDiv.setAttribute("data-role", "collapsible")
+                choreDiv.setAttribute("data-role", "collapsible");
 
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
-
+	                    var itemValue;
                     // Creates li for each element of chore
                           // changed li to br
 
                         if (item[m][0] === "Chore Name: ") {
-	                        var itemValue = item[m][1],
-	                        	headerItem = document.createElement("h4");
-	                        headerItem.innerHTML = itemValue;
-	                        choreDiv.appendChild(headerItem);
+	                        var headerItem = document.createElement("h4");
+	                    itemValue = item[m][1];
+	                    headerItem.innerHTML = itemValue;
+	                    choreDiv.appendChild(headerItem);
                         } else {
-                        var newItem = document.createElement("p"),
-						 	itemValue = item[m][0] + " " + item[m][1];
+                        var newItem = document.createElement("p");
+						itemValue = item[m][0] + " " + item[m][1];
 						newItem.innerHTML = itemValue;
                         choreDiv.appendChild(newItem);
                         }
@@ -102,7 +97,7 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"];
 
         }
 
-        $(gE("theDoer")).listview('refresh');
+        $(document.getElementById("theDoer")).listview('refresh');
 
     }
 
@@ -137,17 +132,12 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"];
 
 // Start Add Chore Page Code
 
-$('#addItem').on('pageinit', function(){
+
+$('#addChore').on('pageinit', function(){
+
+
 
 /*
-// getElementById Function
-    function gE(x){
-        var theElement = document.getElementById(x);
-        return theElement;
-    }
-*/
-
-
 		var myForm = $('#choreForm');
 		    myForm.validate({
 			invalidHandler: function(form, validator) {
@@ -158,7 +148,85 @@ $('#addItem').on('pageinit', function(){
 		}
 	});
 
-	//any other code needed for addItem page goes here
+*/
+
+var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
+	dateOptions = ["Select a Due Date", "Today", "Tomorrow", "Future"];
+
+/* Create and populate chore doers */
+    function listDoers() {
+        var selectEl = document.getElementById("choredoer");
+
+console.log(selectEl);
+
+        for (var i = 0, j = choreDoer.length; i < j; i++) {
+            var makeOption = document.createElement("option"),
+                optText = choreDoer[i];
+            makeOption.setAttribute("value", optText);
+            makeOption.innerHTML = optText;
+            selectEl.appendChild(makeOption);
+        }
+    }
+
+/* End create and populate chore doers */
+
+/* Create and populate date options */
+    function listDates() {
+        var selectLi = document.getElementById("date"),
+            makeSelect = document.createElement("select");
+        makeSelect.setAttribute("name", "duedate");
+        makeSelect.setAttribute("id", "duedate");
+        for (var i = 0, j = dateOptions.length; i < j; i++) {
+            var makeOption = document.createElement("option"),
+                optText = dateOptions[i];
+            makeOption.setAttribute("value", optText);
+            makeOption.innerHTML = optText;
+            makeSelect.appendChild(makeOption);
+        }
+        selectLi.appendChild(makeSelect);
+    }
+
+/* End create and populate date options */
+
+   	var setDate = document.getElementById("duedate");
+
+
+// Date function
+    function chooseDate() {
+	    document.getElementById("datevalue").removeAttribute("value");
+        if (setDate.value === "Today") {
+            var today = new Date(),
+                todayMonth = (today.getMonth() + 1),
+                todayDay = today.getDate(),
+                todayYear = today.getFullYear(),
+                todayDate = todayMonth + "/" + todayDay + "/" + todayYear;
+                document.getElementById("dateselect").style.display = "none";
+                document.getElementById("datevalue").setAttribute("value", todayDate);
+            return todayDate;
+        } else if (setDate.value === "Tomorrow") {
+            var tomorrow = new Date();
+            tomorrow.setDate (tomorrow.getDate () + 1);
+            var tomMonth = (tomorrow.getMonth() + 1),
+                tomDay = tomorrow.getDate(),
+                tomYear = tomorrow.getFullYear(),
+                tomDate = tomMonth + "/" + tomDay + "/" + tomYear;
+                document.getElementById("dateselect").style.display = "none";
+                document.getElementById("datevalue").setAttribute("value", tomDate);
+            return tomDate;
+        } else if (setDate.value === "Future") {
+	            document.getElementById("dateselect").style.display = "block";
+	            document.getElementById("future").addEventListener("change", function() {
+	            	document.getElementById("datevalue").setAttribute("value", document.getElementById("future").value);
+	            });
+        }
+
+    }
+
+// End Date Function
+
+listDoers();
+listDates();
+
 
 });
 
@@ -168,13 +236,6 @@ $('#addItem').on('pageinit', function(){
 
 $('#allChores').on('pageinit', function(){
 
-/*
-// getElementById Function
-    function gE(x){
-        var theElement = document.getElementById(x);
-        return theElement;
-    }
-*/
 
     // Autofill with JSON data - used with JQM
 	function insertJSON() {
@@ -189,11 +250,31 @@ $('#allChores').on('pageinit', function(){
 
 	function getImage(doerName, field, align, size) {
 		var newImg = document.createElement("img"),
-			setSrc = newImg.setAttribute("src", "images/" + doerName + ".png")
+			setSrc = newImg.setAttribute("src", "images/" + doerName + ".png"),
 			setSize = newImg.setAttribute("height", size);
 		newImg.setAttribute("align", align);
 		field.appendChild(newImg);
 
+	}
+
+	function sortByDate() {
+		var sortArray = [];
+		for (var a=0, b=localStorage.length; a<b; a++) {
+
+			var key = localStorage.key(a),
+				value = localStorage.getItem(key),
+				item = JSON.parse(value);
+			sortArray.push(item);
+
+		}	// Closes localStorage For Loop
+
+			sortArray.sort(function(c,d){
+				if (c.date[1] < d.date[1]) {return -1;}
+				if (c.date[1] > d.date[1]) {return 1;}
+				return 0;
+			});  // Closes Sort Loop
+
+		return sortArray;
 	}
 
 
@@ -202,60 +283,63 @@ $('#allChores').on('pageinit', function(){
 
 		if (localStorage.length >= 1) {
 
-		var mainUL = gE("viewAll");
-		var sortArray = [];
-		for (var a=0, b=localStorage.length; a<b; a++) {
-/*
-			var olBullet = document.createElement("li");
-			olBullet.setAttribute("class", "item");
-*/
+		var mainUL = document.getElementById("viewAll"),
+			sortArray = sortByDate(),
+		    mainDiv = document.createElement("div");
+	        mainDiv.setAttribute("data-role", "listview");
+	        mainDiv.setAttribute("data-inset", "false");
 
-			var key = localStorage.key(a);
-			var value = localStorage.getItem(key);
-			var item = JSON.parse(value);
-			sortArray.push(item);
 
-		}	// Closes localStorage For Loop
+	 // Loops through Sorted Array
 
-			sortArray.sort(function(c,d){
-				if (c.date[1] < d.date[1]) return -1;
-				if (c.date[1] > d.date[1]) return 1;
-				return 0;
-			})  // Closes Sort Loop
-console.log(sortArray);
-		// SORTED!  Now to get it back out!
+		for (var c = 0, d = sortArray.length; c < d; c++) {
+			var	obj = sortArray[c],
+			 	choreDiv = document.createElement("li");
+//                choreDiv.setAttribute("data-role", "collapsible");
 
-		for (c = 0, d = sortArray.length; c < d; c++) {
-
-		// Creates li for each individual chore
-	        var olBullet = document.createElement("li");
-	        olBullet.setAttribute("class", "item");
-
-			var obj = sortArray[c];
-
-		    getImage(obj.who[1], olBullet, "left", "80px");
 
                 // Itemizes specific data elements of chore
                     for (var f in obj) {
+                    	var objValue; // added
+
 
                     // Creates li for each element of chore
-                        var newItem = document.createElement("p"),
-                            itemValue = obj[f][0] + " " + obj[f][1];
-                        newItem.innerHTML = itemValue;
-                        olBullet.appendChild(newItem);
-                    } // Closes Each Item For Loop
+                    	if (obj[f][0] === "Chore Name: ") {
+	                    	var headerObj = document.createElement("h4");
 
-	                    mainUL.appendChild(olBullet);
+
+
+	                    getImage(obj.who[1], choreDiv, "left", "80px");
+
+	                    objValue = obj[f][1];
+	                    headerObj.innerHTML = objValue;
+	                    choreDiv.appendChild(headerObj);
+                    	} else {
+	                    	var newObj = document.createElement("p");
+	                    	objValue = obj[f][0] + " " + obj[f][1];
+	                    	newObj.innerHTML = objValue;
+	                    	choreDiv.appendChild(newObj);
+                    	}
+
+
+                    } // Closes Each Item For Loop
+            mainDiv.appendChild(choreDiv);
 
             } // Closes newItem For Loop
+
+            mainUL.appendChild(mainDiv);
+
+
         } else {
             alert("There is no data in localStorage so default data was added.");
             insertJSON();
         }
+
+        $(document.getElementById("viewAll")).listview('refresh');
 	}
 
 
-    	sortStorage();
+sortStorage();
 
 	});
 

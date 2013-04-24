@@ -217,27 +217,13 @@
 
 			<form action = " " id = "choreForm">
 
-<!--
 					<div data-role = "fieldcontain">
-						<label for = "choredoer">
-							Name:
-						</label>
-
-						<!-- Dynamically populated dropdown -->
-<!--
-
-					</div>
--->
-
-					<div data-role = "fieldcontain">
-						<fieldset data-role = "controlgroup" id = "person">
-							<legend>
+						<label for = "person" class = "select">
 								Who:
-							</legend>
-							<div id = "person">
-
-							</div>
-						</fieldset>
+						</label>
+						<select name = "choredoer" id = "choredoer">
+								<!-- Dynamically populated -->
+						</select>
 					</div>
 
 					<div data-role = "fieldcontain">
@@ -335,8 +321,9 @@
 
 		<div data-role="content">
 
-			<ul id="viewAll"data-role="listview" data-inset="false" data-filter="true">
-			<li data-role="list-divider">All Chores</li>
+			<ul id="viewAll" data-role="listview" data-filter="true">
+				<li data-role="list-divider">All Chores</li>
+
 
 			<!-- Entire Chore List Goes Here -->
 
@@ -368,7 +355,7 @@
 		</div>
 
 		<div data-role="content">
-			<ul id = "Anyone"   data-role="listview" data-filter="true">
+			<ul data-role="listview" data-filter="true">
 				<li data-role="list-divider">About this App</li>
 				<li>Created by Susan R. Miller</li>
 				<li>Developed for MIU 1304</li>
