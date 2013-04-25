@@ -18,7 +18,49 @@ img {
 	padding-bottom: 3px;
 }
 
+a#reset {
+	text-decoration: underline;
+	color: gray;
+	text-align: middle;
+}
+
+label.error {
+	display: block;
+	margin: 5px 0px;
+	color: red;
+
+}
+
+#choreErrorLink {
+
+	display: none;
+
+}
+
 .ui-field-contain div.ui-slider-switch {
 	width: 15em;
 }
 
+.ast {
+
+	display: inline;
+	color: red;
+
+}
+
+.ast-explain {
+	display: inline;
+	text-align: right;
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.inputhint {
+
+	display: inline;
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+
+}
