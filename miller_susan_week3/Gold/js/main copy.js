@@ -135,32 +135,20 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"];
 
 $('#addChore').on('pageinit', function(){
 
-		var formData = $('#choreForm'),
-			formErrors = $("#choreErrorLink");
 
-		    formData.validate({
+
+/*
+		var myForm = $('#choreForm');
+		    myForm.validate({
 			invalidHandler: function(form, validator) {
-				formErrors.click();
-				var html = "To err is human, to fill in complete data divine.<p>";
-				for (var key in validator.submitted) {
-					var label = $("label[for^='"+ key +"']").not("[generated]");
-					var legend = label.closest("fieldset").find("ui-controlgroup-label");
-					var fieldName = legend.length ? legend.text() : label.text();
-					html += "<li>" + fieldName +"</li>";
-				};
-				$("#addChoreErrors ul").html(html);
 			},
 			submitHandler: function() {
-				var data = formData.serializeArray();
-				storeData(data);
+		var data = myForm.serializeArray();
+			storeData(data);
+		}
+	});
 
-			}
-		});
-
-
-
-
-
+*/
 
 var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
 	dateOptions = ["Today", "Tomorrow", "Future"];
@@ -180,10 +168,25 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
 
 /* End create and populate chore doers */
 
-   	var setDate = document.getElementById("datevalue");
+/* Create and populate date options */
+    function listDates() {
+        var selectEl = document.getElementById("date");
+
+        for (var i = 0, j = dateOptions.length; i < j; i++) {
+            var makeOption = document.createElement("option"),
+                optText = dateOptions[i];
+            makeOption.setAttribute("value", optText);
+            makeOption.innerHTML = optText;
+            selectEl.appendChild(makeOption);
+
+        }
+    }
+
+/* End create and populate date options */
+
+   	var setDate = document.getElementById("duedate");
 
 
-/*
 // Date function
     function chooseDate() {
 	    document.getElementById("datevalue").removeAttribute("value");
@@ -195,7 +198,6 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
                 todayDate = todayMonth + "/" + todayDay + "/" + todayYear;
                 document.getElementById("dateselect").style.display = "none";
                 document.getElementById("datevalue").setAttribute("value", todayDate);
-                document.getElementById("future").setAttribute("placeholder", todayDate);
             return todayDate;
         } else if (setDate.value === "Tomorrow") {
             var tomorrow = new Date();
@@ -206,24 +208,21 @@ var choreDoer = ["Mom", "Papa", "Daughter A", "Daughter B", "Anyone"],
                 tomDate = tomMonth + "/" + tomDay + "/" + tomYear;
                 document.getElementById("dateselect").style.display = "none";
                 document.getElementById("datevalue").setAttribute("value", tomDate);
-                document.getElementById("future").setAttribute("placeholder", tomDate);
             return tomDate;
         } else if (setDate.value === "Future") {
 	            document.getElementById("dateselect").style.display = "block";
 	            document.getElementById("future").addEventListener("change", function() {
-	            document.getElementById("datevalue").setAttribute("value", document.getElementById("future").value);
-	            document.getElementById("future").setAttribute("placeholder", "Select a Date");
+	            	document.getElementById("datevalue").setAttribute("value", document.getElementById("future").value);
 	            });
         }
 
     }
-*/
 
 // End Date Function
 
-
 listDoers();
-//setDate.addEventListener("click", chooseDate);
+listDates();
+
 
 });
 
@@ -354,42 +353,6 @@ var getData = function(){
 
 var storeData = function(data){
 
-
-// Begin Store Data Function
-		var item = {};
-
-
-		// Check for existing key and set one if needed
-		var id;
-		if ((data[0].name) != "key") {
-			id = Math.floor(Math.random()*1000000);
-
-		} else {
-			id = key;
-		}
-
-
-		// Gather and store values as object with form label and value
-
-			item.chore = ["Chore Name: ", data[0].value];
-			item.who = ["Person Responsible: ", data[1].value];
-			item.details = ["Further Details: ", data[2].value];
-			item.date = ["Due Date: ", data[3].value];
-			item.time = ["Time Required: ", data[4].value];
-			item.done = ["Is it Done? ", data[5].value];
-
-
-		// Save to localStorage
-		localStorage.setItem(id, JSON.stringify(item));
-		$("#saveSuccessLink").click();
-
-/* 		$.mobile.changePage("#allChores"); */
-
-
-
-
-// End Store Data Function
-
 };
 
 var	deleteItem = function (){
@@ -398,27 +361,6 @@ var	deleteItem = function (){
 
 var clearLocal = function(){
 
-    // Insistent confirmation of chore deletion
-        var check = confirm("Are you sure you want to clear all chores?");
-        if (check) {
-            var again = confirm("Are you REALLY sure you want to clear all chores?");
-            if (again) {
-                var certain = confirm("Mom knows if you're deleting them without finishing.  You know this, right?");
-                if (certain) {
-                    localStorage.clear();
-                    window.location.reload();
-
-    // Responses to not chosing to delete
-                } else {
-                    alert("Smart move.");
-                }
-            } else {
-                alert("I thought so.");
-            }
-        } else {
-            alert("Good job!");
-        }
-    };
+};
 
 
-document.getElementById("resetAll").addEventListener("click", clearLocal);
