@@ -152,7 +152,6 @@ if (document.URL.indexOf("additem") > 1) {
                 doneValue = radios[i].value;
             }
         }
-        return doneValue;
     }
 
 // Toggles what shows when
@@ -222,7 +221,7 @@ if (document.URL.indexOf("additem") > 1) {
     function validate(e) {
         var getDoer = gE("choredoer"),
             getName = gE("chorename"),
-            getTheDate = gE("datevalue").getAttribute("value");
+            getTheDate = gE("duedate");
 
 
         //Error Message Reset
@@ -252,6 +251,7 @@ if (document.URL.indexOf("additem") > 1) {
         //Due Date Validation mm/dd/yyyy
         if(getTheDate.value === "Select a Due Date") {
             var pickDate = "Please select a due date.";
+            getTheDate.style.border = "1px solid red";
             msgs.push(pickDate);
         } else if((getTheDate.value === "Future") && !(gE("datevalue").hasAttribute("value"))) {
         	var dateError = "Please select a valid date.";
@@ -335,11 +335,16 @@ if (document.URL.indexOf("additem") > 1) {
 
     // Assures key gets passed through
         editSubmit.key = this.key;
+
+
+
     }
 
 // Delete specific chore
     function deleteChore() {
-       var ask = confirm("Are you sure you're ready to delete this chore?");
+
+    // Checks which radio button is selected
+            var ask = confirm("Ready to delete this chore?");
             if(ask){
                 localStorage.removeItem(this.key);
                 window.location.reload();
@@ -466,10 +471,14 @@ if (document.URL.indexOf("additem") > 1) {
                 olBullet.setAttribute("class", "item");
 //                newUL.appendChild(olBullet);
 
-            // Gets data fro localStorage back into an object
+            // Gets data from localStorage back into an object
                 var key = localStorage.key(i);
                 var value = localStorage.getItem(key);
                 var item = JSON.parse(value);
+
+            // Creates li for edit and delete links for each item
+                var itemLinks = document.createElement("li");
+
 
                 getImage(item.who[1], olBullet, "left");
 
@@ -595,7 +604,6 @@ if (document.URL.indexOf("additem") > 1) {
 
 if (document.URL.indexOf("additem") > 1) {
     addChore.addEventListener("click", validate);
-    showChores.addEventListener("click", showAll);
     resetChores.addEventListener("click", empty);
     showChoresTop.addEventListener("click", showAll);
     resetChoresTop.addEventListener("click", empty);

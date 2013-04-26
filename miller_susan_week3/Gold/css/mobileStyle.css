@@ -37,6 +37,11 @@ label.error {
 
 }
 
+#saveSuccessLink{
+
+	display: none;
+}
+
 .ui-field-contain div.ui-slider-switch {
 	width: 15em;
 }

@@ -1,7 +1,7 @@
 //
 // Author: Susan R. Miller
 // Course: MiU1304
-// Week 2
+// Week 3
 //
 //
 //
@@ -28,58 +28,54 @@ window.addEventListener("DOMContentLoaded", function () {
         showDoer = gE("browsedoers"),
         doneValue;
 
-/* Create and populate browse chore doers */
-/*
+// Create and populate browse chore doers - used with JQM
     function browseDoers() {
         var doerDiv = gE("browsePeople");
         for (var i = 1, j = choreDoer.length; i < j; i++) {
-            var makeItem = document.createElement("div"),
+            var makeItem = document.createElement("li"),
             	makeLink = document.createElement("a"),
                 itemText = choreDoer[i],
                 linkableName = itemText.replace(" ", "_");
-              if ((i == 1) || (i == 4)) {
-	              makeItem.setAttribute("class", "ui-block-a");
-              }  else if ((i == 2) || (i == 5)) {
-	              makeItem.setAttribute("class", "ui-block-b");
-              }  else if ((i == 3) || (i == 6)) {
-	              makeItem.setAttribute("class", "ui-block-c");
-              }
-
 			makeItem.setAttribute("value", itemText);
             makeLink.href = "#" + linkableName + "List";
-            getImage(choreDoer[i], makeItem, "center");
+            getImage(choreDoer[i], makeItem, "left", "30px");
             makeLink.innerHTML = itemText;
             makeItem.appendChild(makeLink);
             doerDiv.appendChild(makeItem);
         }
 
-        $(gE("browsePeople")).listview('refresh'); // No way to refresh dynamically created thumbnail grid? Boo!
+        $(gE("browsePeople")).listview('refresh');
 
     }
-*/
 
 	if (document.URL.indexOf("index") > 1) {
+		browseDoers();
 		eachPerson();
-		allChores();
+		listDoers();
+		listDates();
+		sortStorage();
 	}
-
 
 
 /* End create and populate browse chore doers */
 
 /* Create and populate chore doers */
     function listDoers() {
-        var selectLi = gE("person"),
-            makeSelect = document.createElement("select");
-        makeSelect.setAttribute("id", "choredoer");
+        var selectDiv = gE("person"),
+            makeInput = document.createElement("input");
         for (var i = 0, j = choreDoer.length; i < j; i++) {
-            var makeOption = document.createElement("option"),
-                optText = choreDoer[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
+            var optText = choreDoer[i];
+            makeInput.setAttribute("type", "radio");
+            makeInput.setAttribute("name", "choredoer");
+	        makeInput.setAttribute("value", optText);
+	        makeInput.setAttribute("id", optText);
+	        makeInput.innerHTML = optText;
+	        selectDiv.appendChild(makeInput);
+
+console.log(optText);
+
         }
-        selectLi.appendChild(makeSelect);
+
     }
 
 /* End create and populate chore doers */
@@ -88,6 +84,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function listDates() {
         var selectLi = gE("date"),
             makeSelect = document.createElement("select");
+        makeSelect.setAttribute("name", "duedate");
         makeSelect.setAttribute("id", "duedate");
         for (var i = 0, j = dateOptions.length; i < j; i++) {
             var makeOption = document.createElement("option"),
@@ -99,11 +96,6 @@ window.addEventListener("DOMContentLoaded", function () {
         selectLi.appendChild(makeSelect);
     }
 
-
-if (document.URL.indexOf("additem") > 1) {
-    listDoers(); // Makes the drop-down happen.
-    listDates(); // Makes the drop-down happen.
-    }
 
 /* End create and populate date options */
 
@@ -183,8 +175,8 @@ if (document.URL.indexOf("additem") > 1) {
 		var rawDate = gE("datevalue").getAttribute("value");
 		if (rawDate.charAt(4) === "-") {
 			var brokenDate = rawDate.split("-");
-			if (brokenDate[1].length<2) {brokenDate[1] = "0" + brokenDate[1];};
-			if (brokenDate[2].length<2) {brokenDate[2] = "0" + brokenDate[2];};
+			if (brokenDate[0].length == 1) {brokenDate[0] = "0" + brokenDate[0];};
+			if (brokenDate[2].length == 1) {brokenDate[2] = "0" + brokenDate[2];};
 			var reordered = brokenDate[1] + "/" + brokenDate[2] + "/" + brokenDate[0];
 			gE("datevalue").setAttribute("value", reordered);
 		}
@@ -280,12 +272,16 @@ if (document.URL.indexOf("additem") > 1) {
 
 	function dateCalVal(storedDate) {
 		var brokenCalVal = storedDate.split("/"),
+		    reorderedCalVal
+		    if (brokenCalVal[0].length == 1) {brokenCalVal[0] = "0" + brokenCalVal[0];};
+		    if (brokenCalVal[2].length == 1) {brokenCalVal[2] = "0" + brokenCalVal[2];}
+
 		    reorderedCalVal = brokenCalVal[2] + "-" + brokenCalVal[0] + "-" + brokenCalVal[1];
 		    gE("datevalue").setAttribute("value", reorderedCalVal);
 	}
 
 
-// Adds Image
+// Adds Image - used with JQM
 
 	function getImage(doerName, field, align, size) {
 		var newImg = document.createElement("img"),
@@ -316,7 +312,7 @@ if (document.URL.indexOf("additem") > 1) {
         gE("difficulty").value = item.effort[1];
 
     // Loop required to determine which (if any) radios were checked
-        var radios = document.forms[0].done;
+        var radios = document.forms[0].status;
         for (var i = 0; i<radios.length; i++) {
             if (radios[i].value === "Not Yet" && item.done[1] === "Not Yet") {
                 radios[i].setAttribute("checked", "checked");
@@ -389,7 +385,7 @@ if (document.URL.indexOf("additem") > 1) {
         itemLinks.appendChild(deleteLink);
     }
 
-// Autofill with JSON data
+// Autofill with JSON data - used with JQM
 	function insertJSON() {
 		// store info from JSON.js
 		for (var n in json) {
@@ -462,7 +458,7 @@ if (document.URL.indexOf("additem") > 1) {
         }
     }
 
-// Shows all chores
+// Shows all chores - used with JQM
     function allChores() {
         if (localStorage.length >= 1) {
 
@@ -475,14 +471,14 @@ if (document.URL.indexOf("additem") > 1) {
             // Creates li for each individual chore
                 var olBullet = document.createElement("li");
                 olBullet.setAttribute("class", "item");
-//                newUL.appendChild(olBullet);
 
             // Gets data fro localStorage back into an object
                 var key = localStorage.key(i);
                 var value = localStorage.getItem(key);
                 var item = JSON.parse(value);
 
-                getImage(item.who[1], olBullet, "left");
+                getImage(item.who[1], olBullet, "left", "80px");
+
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
@@ -492,11 +488,11 @@ if (document.URL.indexOf("additem") > 1) {
                             itemValue = item[m][0] + " " + item[m][1];
                         newItem.innerHTML = itemValue;
                         olBullet.appendChild(newItem);
-                    }
+                    } // Closes Each Item For Loop
 
                     mainUL.appendChild(olBullet);
 
-            }
+            } // Closes localStorage For Loop
 
 
     // Returns alert if localStorage is empty
@@ -504,15 +500,84 @@ if (document.URL.indexOf("additem") > 1) {
             alert("There is no data in localStorage so default data was added.");
             insertJSON();
         }
-    }
+    } // Closes All Chores Function
+
+// Sorted Newsfeed
+	function sortStorage() {
+
+		if (localStorage.length >= 1) {
+
+		var mainUL = gE("viewAll");
+		var sortArray = [];
+		for (var a=0, b=localStorage.length; a<b; a++) {
+/*
+			var olBullet = document.createElement("li");
+			olBullet.setAttribute("class", "item");
+*/
+
+			var key = localStorage.key(a);
+			var value = localStorage.getItem(key);
+			var item = JSON.parse(value);
+			sortArray.push(item);
+
+		}	// Closes localStorage For Loop
+
+			sortArray.sort(function(c,d){
+				if (c.date[1] < d.date[1]) {return -1;}
+				if (c.date[1] > d.date[1]) {return 1;}
+				return 0;
+			})  // Closes Sort Loop
 
 
 
-// Shows chores for specific person
+																// SORTED!  Now to get it back out!
+		for (c = 0, d = sortArray.length; c < d; c++) {
+
+		// Creates li for each individual chore
+	        var olBullet = document.createElement("li");
+	        olBullet.setAttribute("class", "item");
+
+			var obj = sortArray[c];
+
+		    getImage(obj.who[1], olBullet, "left", "80px");
+
+                // Itemizes specific data elements of chore
+                    for (var f in obj) {
+
+                    // Creates li for each element of chore
+                        var newItem = document.createElement("p"),
+                            itemValue = obj[f][0] + " " + obj[f][1];
+                        newItem.innerHTML = itemValue;
+                        olBullet.appendChild(newItem);
+                    } // Closes Each Item For Loop
+
+	                    mainUL.appendChild(olBullet);
+
+            } // Closes newItem For Loop
+        } else {
+            alert("There is no data in localStorage so default data was added.");
+            insertJSON();
+        }
+	}
+
+
+
+
+
+
+
+
+
+
+// Shows chores for specific person - used with JQM
     function showPerson(theDoer) {
 
-        // Creates ordered list and appends to newContainer
-            var mainUL = document.getElementById(theDoer);
+        // Pins down where to add the list
+            var mainUL = document.getElementById(theDoer),
+            	mainDiv = document.createElement("div");
+	            mainDiv.setAttribute("data-role", "collapsible-set");
+	            mainDiv.setAttribute("data-inset", "false");
+
 
         // Steps through each store in localStorage
             for (var i=0, j=localStorage.length; i<j; i++) {
@@ -521,33 +586,46 @@ if (document.URL.indexOf("additem") > 1) {
                 var value = localStorage.getItem(key);
                 var item = JSON.parse(value);
 
-
             if ((item.who[1] === theDoer) && (item.done[1] === "Not Yet")) {
 
             // Creates li for each individual chore
-                var olBullet = document.createElement("li");
+                var choreDiv = document.createElement("div");
+                choreDiv.setAttribute("data-role", "collapsible")
+
 
                 // Itemizes specific data elements of chore
                     for (var m in item) {
 
                     // Creates li for each element of chore
-                        var newItem = document.createElement("p");  // changed li to br
-						var itemValue = item[m][0] + " " + item[m][1];
+                          // changed li to br
+
+                        if (item[m][0] === "Chore Name: ") {
+	                        var itemValue = item[m][1],
+	                        	headerItem = document.createElement("h4");
+	                        headerItem.innerHTML = itemValue;
+	                        choreDiv.appendChild(headerItem);
+                        } else {
+                        var newItem = document.createElement("p"),
+						 	itemValue = item[m][0] + " " + item[m][1];
 						newItem.innerHTML = itemValue;
-                        olBullet.appendChild(newItem);
+                        choreDiv.appendChild(newItem);
+                        }
 
                     }
-                mainUL.appendChild(olBullet);
-
+                mainDiv.appendChild(choreDiv);
             }
+
+            mainUL.appendChild(mainDiv);
+
         }
 
+        $(gE("theDoer")).listview('refresh');
 
     }
 
 
 
-// Shows chores for specific person
+// Shows chores for specific person - used with JQM
     function eachPerson() {
 
 		var stepOne = document.getElementsByTagName("ul");
@@ -614,9 +692,10 @@ if (document.URL.indexOf("additem") > 1) {
     setDate.addEventListener("change", chooseDate);
 }
 
-if (document.URL.indexOf("index") > 1 ) {
-	// var showDoer = gE("choredoer");
-//    showDoer.addEventListener("click", showPerson);
+if (document.URL.indexOf("index") > 1) {
+	resetChores.addEventListener("click", empty);
 }
+
+
 
 }); /* Closes DOM load check function */
