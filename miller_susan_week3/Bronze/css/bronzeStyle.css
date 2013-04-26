@@ -8,6 +8,34 @@ body {
     width: 365px;
 }
 
+/* CSS Brought over from mobileStyle.css */
+
+.ast {
+
+	display: inline;
+	color: red;
+
+}
+
+.ast-explain {
+	display: inline;
+	text-align: right;
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.inputhint {
+
+	display: inline;
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+
+}
+
+/* End mobileStyle.css */
+
 h1 {
     margin: 5px;
     padding-top: 5px;
@@ -71,7 +99,12 @@ option {
     line-height: 1.5em;
 }
 
-a {
+a{
+	color: #ED4F35;
+	font-size: 12px;
+}
+
+a.button {
     text-decoration: none;
     color: white;
 }
