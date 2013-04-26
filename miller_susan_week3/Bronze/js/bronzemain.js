@@ -1,7 +1,7 @@
 //
 // Author: Susan R. Miller
 // Course: MiU1304
-// Week 2
+// Week 3
 //
 //
 //
