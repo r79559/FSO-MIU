@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- Susan R. Miller, Week 3, MiU1304 -->
+<html>
+  <head>
+    <meta charset = "UTF-8" />
+  <meta name = "description" content = "MiU Course App" />
+  <meta name = "keywords" content = "html5, Mobile App Development, Full Sail, homework, school" />
+  <meta name = "robots" content = "index, follow" />
+  <meta name = "viewport" content = "user-scalable = yes, width = device.width" />
+  <meta name = "HandheldFriendly" content = "true" />
+  <meta name = "MobileOptimized" content = "320" />
+  <title>
+    Chore Tracker
+  </title>
+
+  <link href = "css/bronzeStyle.css" rel = "stylesheet" type = "text/css" />
+
+  </head>
+  <body>
+    <h1>
+      <a href = "bronzeindex.html">
+      <img src="images/choretrackersingle.png" alt="choretrackersingle">
+      </a>
+    </h1>
+
+    <div id = "buttonRowTop">
+      <a href = "bronzeadditem.html" id = "addNewTop" class = "button" style = "display:none;">
+        Add New Chore
+      </a>
+      <a href = "#" id = "showAllTop" class = "button">
+        Show All Chores
+      </a>
+      <a href = "#" id = "resetAllTop" class = "button" style = "display:none;">
+        Reset Chore List
+      </a>
+    </div>
+
+    <form action = "#" method = "post" id = "choreform">
+      <ul id = "errors">
+      </ul>
+    <div class = "ast-explain"><div class = "ast">*</div> indicates required field</div>
+
+      <fieldset>
+        <legend>
+          Chore Info
+      </legend>
+      <ul id = "general">
+
+        <li>
+          <label for = "chorename">
+            <div class = "ast">*</div> What is the Chore?
+          </label>
+          <input type = "text" id = "chorename" placeholder = "Please enter a brief description." />
+      </li>
+
+      <li id = "person">
+        <label for = "choredoer">
+          <div class = "ast">*</div> Who is Responsible?
+        </label>
+      </li>
+
+      </ul>
+
+  </fieldset>
+  <fieldset>
+    <legend>
+      Chore Details
+    </legend>
+    <ul id = "details">
+
+      <li>
+        <label for = "duedate">
+          <div class = "ast">*</div> Date Due
+        </label>
+        <ul id = "datevalue">
+          <li id = "date">
+          </li>
+          <li id = "dateselect" style = "display:none;">
+            <input id = "future" type = "date" name = "future" >
+          </input>
+          <div class = "inputhint">Select a Specific Date</div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <label for = "difficulty">
+      Difficulty
+    </label>
+    <ul>
+      <li>
+        <input type = "range" id = "difficulty" name = "difficulty" step = "1" value = "5" min = "1" max = "10" />
+           <div class = "inputhint">On a scale from 1-10</div>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <label>
+      Are you done?
+    </label>
+    <ul>
+      <li>
+        <input type = "radio" checked value = "Not Yet" id = "no" name = "done" />
+        <label for = "no">
+          Not Yet
+        </label>
+      </li>
+      <li>
+        <input type = "radio" value = "Yessiree!" id = "yes" name = "done" />
+        <label for = "yes">
+          Yessiree!
+        </label>
+      </li>
+    </ul>
+  </li>
+  </ul>
+  </fieldset>
+
+</form>
+
+<div id = "buttonRowBottom">
+  <a href = "#" id = "addNew" class = "button">
+    Submit Chore
+  </a>
+
+  <a href = "#" id = "resetAll">
+    Reset Form
+  </a>
+</div>
+
+<script src = "js/json.js" type = "text/javascript" >
+</script>
+<script src = "js/bronzeMain.js" type = "text/javascript" >
+</script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+
+/* Susan R. Miller
+   MiU 1304 Week 3 */
+
+
+p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+img {
+	padding-left: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+h5 {
+	padding: 0px;
+	margin: 0px;
+}
+
+.grid {
+	height: 100px;
+	width: 100px;
+	padding: 5px;
+	border: 1px solid rgba(0,0,0,0.5);
+}
+
+p.gridlabel {
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+}
+
+li {
+	list-style-type: none;
+}
+
+a#reset {
+	text-decoration: underline;
+	color: gray;
+	text-align: middle;
+}
+
+label.error {
+	display: block;
+	margin: 5px 0px;
+	color: red;
+
+}
+
+#choreErrorLink {
+
+	display: none;
+
+}
+
+.ui-field-contain div.ui-slider-switch {
+	width: 15em;
+}
+
+.ast {
+
+	display: inline;
+	color: red;
+
+}
+
+.ast-explain {
+	display: inline;
+	text-align: right;
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.inputhint {
+
+	display: inline;
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+
+}
