@@ -69,3 +69,8 @@ label.error {
 	font-style: italic;
 
 }
+
+img.mini {
+	padding: 0px;
+	margin: 0px;
+}
